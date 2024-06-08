@@ -1,6 +1,8 @@
 on drop:
     if item is {Revive}:
         set {_item} to item
+
+
         loop blocks in radius 4 around player:
             if loop-block is beacon:
                 set {_beacon} to loop-block
@@ -23,8 +25,15 @@ on drop:
                                                     add item to {itemrevive::*}
                                                     add item to {itemrevive%uuid of player%::*}
 
+                                                    wait 0.1 seconds
+                                                    set {_loc} to location of dropped item
+                                                    set x coord of {_loc} to dropped item's x coord
+                                                    set y coord of {_loc} to dropped item's y coord
+                                                    set z coord of {_loc} to dropped item's z coord
 
+                                                    drop nautilus shell with custom model data 220 at {_loc}
 
+                                                    broadcast "%location of {_loc}%"
                                                     set {Revive::Gui} to a new chest inventory with 6 row with name "&6&lʀᴇssᴜʀᴇᴄᴛ &7a player"
                                                     set {_s} to 0
                                                     loop {BannedPlayers::*}:
@@ -37,18 +46,20 @@ on drop:
                                                     set {reviveselected.%{_uuid}%} to false
                                                     while {reviveselected.%{_uuid}%} is false:
                                                         wait 1 tick
+
+                                    
                                                     
-                                                    clear dropped item
+                                                    
                                                     
 
                                                     #add nbt compound from "{Tags:""ReviveBooks.%uuid of player%""}" to nbt compound of dropped item
 
                                                     set {_beaconloc} to location of {_beacon}
-                                                    #circlerevive({_beaconloc})
-                                                    #circlerevive2({_beaconloc})
-                                                    #lightning({_beaconloc})
+                                                    circlerevive({_beaconloc})
+                                                    circlerevive2({_beaconloc})
+                                                    lightning({_beaconloc})
                                                     wait 1 second
-                                                    #circlealllast({_beaconloc})
+                                                    circlealllast({_beaconloc})
 
 
 
@@ -62,7 +73,7 @@ function circlerevive(pl: location):
             loop {_iterations} times:
                 set {_angle} to loop-value-3 * {_step}
                 set {_v} to spherical vector radius {_s}, yaw {_angle}, pitch (0) # Pitch is set to 0 to make it around the player
-                draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0
+                draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0.000000001
                 draw 1 of smoke at {_pl} ~ {_v} with extra 0 with force
 
             add 0.5 to {_s}
@@ -91,7 +102,7 @@ function circlerevive2(pl: location):
             loop {_iterations} times:
                 set {_angle} to loop-value-3 * {_step}
                 set {_v} to spherical vector radius {_s}, yaw {_angle}, pitch (0) # Pitch is set to 0 to make it around the player
-                draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0
+                draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0.000000001
                 draw 1 of smoke at {_pl} ~ {_v} with extra 0 with force
 
             add 0.5 to {_s}
@@ -125,7 +136,7 @@ function circlealllast(pl: location):
         loop {_iterations} times:
             set {_angle} to loop-value-2 * {_step}
             set {_v} to spherical vector radius 7.5, yaw {_angle}, pitch (0) # Pitch is set to 0 to make it around the player
-            draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0
+            draw 1 of dust using dustOption(rgb(239, 239, 239), 1) at {_pl} ~ {_v} with extra 0.000000001
             draw 1 of smoke at {_pl} ~ {_v} with extra 0 with force
 
         wait 0.3 seconds
@@ -149,6 +160,10 @@ on inventory click:
             wait 12 seconds
 
             set {revived.%uuid of {_T}%} to true
+
+            loop all dropped items:
+                
+
             remove {itemrevive%uuid of player%::*} from {itemrevive::*}
             clear {itemrevive%uuid of player%::*}
 
@@ -190,15 +205,15 @@ on block place of beacon:
                                 if block infront of {_gildedleft} is a gold block:
                                     if block behind {_gildedleft} is a gold block:
                                         add event-block to {Beaconspedes::*}
-                                        execute console command "/summon minecraft:end_crystal %event-block's x coordinate% 320 %event-block's z coordinate% {BeamTarget:{X:%event-block's x coordinate%, Y:%event-block's y coordinate - 1.7%, Z:%event-block's z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                        execute console command "/summon minecraft:end_crystal %event-block's x coordinate% 365 %event-block's z coordinate% {BeamTarget:{X:%event-block's x coordinate%, Y:%event-block's y coordinate - 1.7%, Z:%event-block's z coordinate%}, Tags:""PedesTag%uuid of player%""}"
                                         #set {_locationcrys} to location of event-block
-                                        #set y coordinate of {_locationcrys} to 320
+                                        #set y coordinate of {_locationcrys} to 365
                                         #spawn end crystal at  {_locationcrys} with nbt compound from "{BeamTarget:{X:%event-block's x coordinate%, Y:%event-block's y coordinate - 1.7%, Z:%event-block's z coordinate%}, Tags:""PedesTag%uuid of player%""}"
 
 on block break of beacon:
     
     set {_loc} to location of event-block
-    set y coordinate of {_loc} to 320
+    set y coordinate of {_loc} to 365
     set {_ancientdebris} to block under event-block
     set {_gildedright} to block right of {_ancientdebris}
     set {_gildedleft} to block left of {_ancientdebris}
@@ -213,7 +228,7 @@ on block break of beacon:
                                 if block infront of {_gildedleft} is a gold block:
                                     if block behind {_gildedleft} is a gold block:
                                         loop all entities within 0.1 blocks of {_loc}:
-                                            if y coordinate of loop-entity is 320:
+                                            if y coordinate of loop-entity is 365:
                                                 if loop-entity is a end crystal:
                                                     play sound "minecraft:block.beacon.deactivate" at player
                                                     remove loop-entity from {crys::*}
@@ -241,9 +256,9 @@ on block break of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     set {_loc} to location of {_beacon}
-                                                    set y coordinate of {_loc} to 320
+                                                    set y coordinate of {_loc} to 365
                                                     loop all entities within 0.1 blocks of {_loc}:
-                                                        if y coordinate of loop-entity is 320:
+                                                        if y coordinate of loop-entity is 365:
                                                             if loop-entity is a end crystal:
                                                                 play sound "minecraft:block.beacon.deactivate" at player
                                                                 remove loop-entity from {crys::*}
@@ -269,7 +284,7 @@ on block place of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     add {_beacon} to {Beaconspedes::*}
-                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
              
 
 
@@ -313,9 +328,9 @@ on block break of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     set {_loc} to location of {_beacon}
-                                                    set y coordinate of {_loc} to 320
+                                                    set y coordinate of {_loc} to 365
                                                     loop all entities within 0.1 blocks of {_loc}:
-                                                        if y coordinate of loop-entity is 320:
+                                                        if y coordinate of loop-entity is 365:
                                                             if loop-entity is a end crystal:
                                                                 play sound "minecraft:block.beacon.deactivate" at player
                                                                 remove loop-entity from {crys::*}
@@ -342,7 +357,7 @@ on block place of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     add {_beacon} to {Beaconspedes::*}
-                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
                  
     
 
@@ -383,9 +398,9 @@ on block break of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     set {_loc} to location of {_beacon}
-                                                    set y coordinate of {_loc} to 320
+                                                    set y coordinate of {_loc} to 365
                                                     loop all entities within 0.1 blocks of {_loc}:
-                                                        if y coordinate of loop-entity is 320:
+                                                        if y coordinate of loop-entity is 365:
                                                             if loop-entity is a end crystal:
                                                                 play sound "minecraft:block.beacon.deactivate" at player
                                                                 remove loop-entity from {crys::*}
@@ -411,7 +426,7 @@ on block place of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     add {_beacon} to {Beaconspedes::*}
-                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
       
 
 
@@ -446,9 +461,9 @@ on block break of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     set {_loc} to location of {_beacon}
-                                                    set y coordinate of {_loc} to 320
+                                                    set y coordinate of {_loc} to 365
                                                     loop all entities within 0.1 blocks of {_loc}:
-                                                        if y coordinate of loop-entity is 320:
+                                                        if y coordinate of loop-entity is 365:
                                                             if loop-entity is a end crystal:
                                                                 play sound "minecraft:block.beacon.deactivate" at player
                                                                 remove loop-entity from {crys::*}
@@ -475,7 +490,7 @@ on block place of gold block:
                                             if block infront of {_gildedleft} is a gold block:
                                                 if block behind {_gildedleft} is a gold block:
                                                     add {_beacon} to {Beaconspedes::*}
-                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                                    execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
       
 
 
@@ -538,9 +553,9 @@ on block break of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             set {_loc} to location of {_beacon}
-                                            set y coordinate of {_loc} to 320
+                                            set y coordinate of {_loc} to 365
                                             loop all entities within 0.1 blocks of {_loc}:
-                                                if y coordinate of loop-entity is 320:
+                                                if y coordinate of loop-entity is 365:
                                                     if loop-entity is a end crystal:
                                                         play sound "minecraft:block.beacon.deactivate" at player
                                                         remove loop-entity from {crys::*}
@@ -567,7 +582,7 @@ on block place of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             add {_beacon} to {Beaconspedes::*}
-                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
 
 
                     
@@ -603,9 +618,9 @@ on block break of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             set {_loc} to location of {_beacon}
-                                            set y coordinate of {_loc} to 320
+                                            set y coordinate of {_loc} to 365
                                             loop all entities within 0.1 blocks of {_loc}:
-                                                if y coordinate of loop-entity is 320:
+                                                if y coordinate of loop-entity is 365:
                                                     if loop-entity is a end crystal:
                                                         play sound "minecraft:block.beacon.deactivate" at player
                                                         remove loop-entity from {crys::*}
@@ -632,7 +647,7 @@ on block place of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             add {_beacon} to {Beaconspedes::*}
-                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
 
 
 
@@ -669,9 +684,9 @@ on block break of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             set {_loc} to location of {_beacon}
-                                            set y coordinate of {_loc} to 320
+                                            set y coordinate of {_loc} to 365
                                             loop all entities within 0.1 blocks of {_loc}:
-                                                if y coordinate of loop-entity is 320:
+                                                if y coordinate of loop-entity is 365:
                                                     if loop-entity is a end crystal:
                                                         play sound "minecraft:block.beacon.deactivate" at player
                                                         remove loop-entity from {crys::*}
@@ -698,7 +713,7 @@ on block place of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             add {_beacon} to {Beaconspedes::*}
-                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
 
 
 
@@ -732,9 +747,9 @@ on block break of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             set {_loc} to location of {_beacon}
-                                            set y coordinate of {_loc} to 320
+                                            set y coordinate of {_loc} to 365
                                             loop all entities within 0.1 blocks of {_loc}:
-                                                if y coordinate of loop-entity is 320:
+                                                if y coordinate of loop-entity is 365:
                                                     if loop-entity is a end crystal:
                                                         play sound "minecraft:block.beacon.deactivate" at player
                                                         remove loop-entity from {crys::*}
@@ -761,7 +776,7 @@ on block place of gilded blackstone:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             add {_beacon} to {Beaconspedes::*}
-                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
 
 
 
@@ -798,9 +813,9 @@ on block break of ancient debris:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             set {_loc} to location of {_beacon}
-                                            set y coordinate of {_loc} to 320
+                                            set y coordinate of {_loc} to 365
                                             loop all entities within 0.1 blocks of {_loc}:
-                                                if y coordinate of loop-entity is 320:
+                                                if y coordinate of loop-entity is 365:
                                                     if loop-entity is a end crystal:
                                                         play sound "minecraft:block.beacon.deactivate" at player
                                                         remove loop-entity from {crys::*}
@@ -826,7 +841,7 @@ on block place of ancient debris:
                                     if block infront of {_gildedleft} is a gold block:
                                         if block behind {_gildedleft} is a gold block:
                                             add {_beacon} to {Beaconspedes::*}
-                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 320 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
+                                            execute console command "/summon minecraft:end_crystal %{_beacon}'s x coordinate% 365 %{_beacon}'s z coordinate% {BeamTarget:{X:%{_beacon}'s x coordinate%, Y:%{_beacon}'s y coordinate - 1.7%, Z:%{_beacon}'s z coordinate%}, Tags:""PedesTag%uuid of player%""}"
                                            
 
 

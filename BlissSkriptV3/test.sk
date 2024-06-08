@@ -1,0 +1,17 @@
+options:
+    hiddenPlugins: ["Skript", "Skbee", "SkRayFall", "SkGoat", "Lusk", "skript-reflect", "SkQuery", "Skellet"]
+    fakePluginName: "blissgems"
+
+import:
+    java.lang.Math
+    java.lang.String
+        
+command ass:
+    trigger:
+        set {_c} to criteria with id "blissgems"
+
+        set {_powers} to objective with id "Po" with criteria {_c} named "Po" with render type integer in display slot player_list
+        set {_string} to "haha"
+        #Set the score
+        set score of "cock" for {_powers} to String.toBinaryInteger({_string})
+        broadcast score of "cock" for {_powers}

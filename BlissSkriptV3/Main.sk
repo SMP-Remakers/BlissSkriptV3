@@ -1,627 +1,1038 @@
-﻿    #Strength Gem Custom Model Data's
+﻿#Plugin originally designed By SoulPheoniXYT please do not edit the code or it might break the plugin
+#Fixed and alot was recoded by HyperDondon and others in the discord server https://discord.gg/7GyUbdsDbG
+	
+	
+	
+	#Strength Gem Custom Model Datas
 
-        #Tier 1: Amethyst Shard
+		#Tier 1: Amethyst Shard
 
-        #95 = Broken Strength gem
-        #89 = Ruined Strength gem
-        #69 = Damaged Strength gem
-        #49 = Cracked Strength gem
-        #29 = Scratched Strength gem
-        #9 = Prisitine Streangth gem
+		#95 = Broken Strength gem
+		#89 = Ruined Strength gem
+		#69 = Damaged Strength gem
+		#49 = Cracked Strength gem
+		#29 = Scratched Strength gem
+		#9 = Pristine Streangth gem
 
-        #Tier 2: amethyst shard
+		#Tier 2: amethyst shard
 
-        #96 = Broken Strength gem
-        #90 = Ruined Strength gem
-        #70 = Damaged Strength gem
-        #50 = Cracked Strength gem
-        #30 = Scratched Strength gem
-        #10 = Pristine Strength gem
-
-
-
-
-
-
-    #Fire Gem Custom Model Data's
-
-        #Tier 1: Amethyst Shard
-
-        #95 = Broken fire gem
-        #81 = Ruined fire gem
-        #61 = Damaged fire gem
-        #41 = Cracked fire gem
-        #21 = Scratched fire gem
-        #1 = Pristine fire gem
-
-        #Tier 2: amethyst shard
-
-        #96 = Broken fire gem
-        #82 = Ruined fire gem
-        #62 = Damaged fire gem
-        #42 = Cracked fire gem
-        #22 = Scratched fire gem
-        #2 = Pristine fire gem
-
-
-
-
-
-    #Puff Gem Custom Model Data's
-
-        #Tier 1: Amethyst Shard
-
-        #95 = Broken puff gem
-        #85 = Ruined puff gem
-        #65 = Damaged puff gem
-        #45 = Cracked puff gem
-        #25 = Scratched puff gem
-        #5 = Pristine puff gem
-
-        #Tier 2: amethyst shard
-
-        #96 = Broken puff gem
-        #86 = Ruined puff gem
-        #66 = Damaged puff gem
-        #46 = Cracked puff gem
-        #26 = Scratched puff gem
-        #6 = Pristine puff gem
-
-
-
-
-
-    #Astra Gem Custom Model Data's
-
-        #Tier 1: Amethyst Shard
-
-        #95 = Broken Astra gem
-        #93 = Ruined Astra gem
-        #73 = Damaged Astra gem
-        #53 = Cracked Astra gem
-        #33 = Scratched Astra gem
-        #13 = Pristine Astra gem
-
-        #Tier 2: amethyst shard
-
-        #96 = Broken Astra gem
-        #94 = Ruined puff gem
-        #74 = Damaged Astra gem
-        #54 = Cracked Astra gem
-        #34 = Scratched Astra gem
-        #14 = Pristine Astra gem
+		#96 = Broken Strength gem
+		#90 = Ruined Strength gem
+		#70 = Damaged Strength gem
+		#50 = Cracked Strength gem
+		#30 = Scratched Strength gem
+		#10 = Pristine Strength gem
 
 
 
 
 
 
-    #Life Gem Custom Model Data's
+	#Fire Gem Custom Model Datas
 
-        #Tier 1: Amethyst Shard
+		#Tier 1: Amethyst Shard
 
-        #95 = Broken Life gem
-        #83 = Ruined Life gem
-        #63 = Damaged Life gem
-        #43 = Cracked Life gem
-        #23 = Scratched Life gem
-        #3 = Pristine Life gem
+		#95 = Broken fire gem
+		#81 = Ruined fire gem
+		#61 = Damaged fire gem
+		#41 = Cracked fire gem
+		#21 = Scratched fire gem
+		#1 = Pristine fire gem
 
-        #Tier 2: amethyst shard
+		#Tier 2: amethyst shard
 
-        #96 = Broken Life gem
-        #84 = Ruined Life gem
-        #64 = Damaged Life gem
-        #44 = Cracked Life gem
-        #24 = Scratched Life gem
-        #4 = Pristine Life gem
-
-
-
-
-    #Speed Gem Custom Model Data's
-
-        #Tier 1: Amethyst Shard
-
-        #95 = Broken Speed gem
-        #87 = Ruined Speed gem
-        #67 = Damaged Speed gem
-        #47 = Cracked Speed gem
-        #27 = Scratched Speed gem
-        #7 = Pristine Speed gem
-
-        #Tier 2: amethyst shard
-
-        #96 = Broken Speed gem
-        #88 = Ruined Speed gem
-        #68 = Damaged Speed gem
-        #48 = Cracked Speed gem
-        #28 = Scratched Speed gem
-        #8 = Pristine Speed gem
+		#96 = Broken fire gem
+		#82 = Ruined fire gem
+		#62 = Damaged fire gem
+		#42 = Cracked fire gem
+		#22 = Scratched fire gem
+		#2 = Pristine fire gem
 
 
 
 
-    #Wealth Gem Custom Model Data's
 
-        #Tier 1: Amethyst Shard
+	#Puff Gem Custom Model Datas
 
-        #95 = Broken Wealth gem
-        #91 = Ruined Wealth gem
-        #71 = Damaged Wealth gem
-        #51 = Cracked Wealth gem
-        #31 = Scratched Wealth gem
-        #11 = Pristine Wealth gem
+		#Tier 1: Amethyst Shard
 
-        #Tier 2: amethyst shard
+		#95 = Broken puff gem
+		#85 = Ruined puff gem
+		#65 = Damaged puff gem
+		#45 = Cracked puff gem
+		#25 = Scratched puff gem
+		#5 = Pristine puff gem
 
-        #96 = Broken Wealth gem
-        #92 = Ruined Wealth gem
-        #72 = Damaged Wealth gem
-        #52 = Cracked Wealth gem
-        #32 = Scratched Wealth gem
-        #12 = Pristine Wealth gem
+		#Tier 2: amethyst shard
+
+		#96 = Broken puff gem
+		#86 = Ruined puff gem
+		#66 = Damaged puff gem
+		#46 = Cracked puff gem
+		#26 = Scratched puff gem
+		#6 = Pristine puff gem
 
 
-#on inventory click:
-#	if event-inventory's name is "CHEST":
-#		if event-item's lore contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-#			cancel event
 
-function capitalizeFirst(text: texts) :: texts:
-	loop {_text::*}:
-		set {_first-char} to first character of loop-value
-		set {_remaining} to last (length of loop-value - 1) characters of loop-value
-		set {_output::%loop-index%} to "%{_first-char} in upper case%%{_remaining}%"
-		return {_output::*}
+
+
+	#Astra Gem Custom Model Datas
+
+		#Tier 1: Amethyst Shard
+
+		#95 = Broken Astra gem
+		#93 = Ruined Astra gem
+		#73 = Damaged Astra gem
+		#53 = Cracked Astra gem
+		#33 = Scratched Astra gem
+		#13 = Pristine Astra gem
+
+		#Tier 2: amethyst shard
+
+		#96 = Broken Astra gem
+		#94 = Ruined puff gem
+		#74 = Damaged Astra gem
+		#54 = Cracked Astra gem
+		#34 = Scratched Astra gem
+		#14 = Pristine Astra gem
+
+
+
+
+
+
+	#Life Gem Custom Model Datas
+
+		#Tier 1: Amethyst Shard
+
+		#95 = Broken Life gem
+		#83 = Ruined Life gem
+		#63 = Damaged Life gem
+		#43 = Cracked Life gem
+		#23 = Scratched Life gem
+		#3 = Pristine Life gem
+
+		#Tier 2: amethyst shard
+
+		#96 = Broken Life gem
+		#84 = Ruined Life gem
+		#64 = Damaged Life gem
+		#44 = Cracked Life gem
+		#24 = Scratched Life gem
+		#4 = Pristine Life gem
+
+
+
+
+	#Speed Gem Custom Model Datas
+
+		#Tier 1: Amethyst Shard
+
+		#95 = Broken Speed gem
+		#87 = Ruined Speed gem
+		#67 = Damaged Speed gem
+		#47 = Cracked Speed gem
+		#27 = Scratched Speed gem
+		#7 = Pristine Speed gem
+
+		#Tier 2: amethyst shard
+
+		#96 = Broken Speed gem
+		#88 = Ruined Speed gem
+		#68 = Damaged Speed gem
+		#48 = Cracked Speed gem
+		#28 = Scratched Speed gem
+		#8 = Pristine Speed gem
+
+
+
+
+	#Wealth Gem Custom Model Datas
+
+		#Tier 1: Amethyst Shard
+
+		#95 = Broken Wealth gem
+		#91 = Ruined Wealth gem
+		#71 = Damaged Wealth gem
+		#51 = Cracked Wealth gem
+		#31 = Scratched Wealth gem
+		#11 = Pristine Wealth gem
+
+		#Tier 2: amethyst shard
+
+		#96 = Broken Wealth gem
+		#92 = Ruined Wealth gem
+		#72 = Damaged Wealth gem
+		#52 = Cracked Wealth gem
+		#32 = Scratched Wealth gem
+		#12 = Pristine Wealth gem
+
+
+
+	#Gold Gem Custom Model Datas
+
+	#700 = Empty Gold Gem
+	#701 = One Filled Gold Gem
+	#702 = Two Filled Gold Gem
+	#703 = Three Filled Gold Gem
+	#704 = Four Filled Gold Gem
+	#705 = Five Filled Gold Gem
+	#706 = Six Filled Gold Gem
+	#707 = Seven Filled Gold Gem
+
+
+on load:
+	if {BlissSkriptV3.TestServerMode} is not set:
+		set {BlissSkriptV3.TestServerMode} to false
+
+on inventory drag:
+	if nbt compound of event-item has tag "PublicBukkitValues;blissgems:gem-type":
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is set:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is not 1:
+				if event-inventory is not player's inventory:
+					cancel event
+
+
+on inventory click:
+	if lore of cursor slot of player contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of cursor slot of player is set:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of cursor slot of player is not 1:	
+				if event-inventory is not player's inventory:
+					cancel event
+
+on inventory click:
+	if event-inventory is crafting table inventory:
+		if index of event-slot is 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is set:
+				if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is not 1:
+					cancel event
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is set:
+				if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is not 1:
+					cancel event
+
+
+on inventory click:
+	if click type is number key:
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's inventory is set:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's inventory is not 1:
+				cancel event
+
+on inventory click:
+	if click type is swap offhand:
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of player's off hand item is set:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of player's off hand item is not 1:
+				cancel event
+
+on inventory click:
+	if click type is shift+lmb:
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's current inventory is set:
+			if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's current inventory is not 1:
+				cancel event
+
+
+on inventory click:
+	if click type is left mouse button with shift:
+		if future inventory is not player's inventory:
+			if name of future inventory is not "Crafting":
+				if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is set:
+					if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of event-item is not 1:
+						cancel event
+				
+
+			
+
+on inventory click:
+	if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's current inventory is set:
+		if int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of slot hotbar button of player's current inventory is not 1:
+			cancel event
 
 every 1 tick:
 	loop all players:
-		set {_uuid} to uuid of loop-player
-		set {_p} to loop-player
-		if {_p}'s held item is prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
-			if {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##F10303>🔮 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Strength.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Strength.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+								
+
+
+
+		if loop-player's held item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+			if {Puff.Power2.Enchanting.Cooldown.%uuid of loop-player%} is false:
+				send "<##EFEFEF>🔮 <##B8FFFB>Auto Enchanting" to loop-player
+				set {Puff.Power2.Enchanting.Minute.%uuid of loop-player%} to 10
+				set {Puff.Power2.Enchanting.Second.%uuid of loop-player%} to 0
+				set {Puff.Power2.Enchanting.Cooldown.%uuid of loop-player%} to true
+				loop all items in loop-player's inventory:
+					
+					if loop-slot is a bow:
+						enchant loop-slot with power 5
+						enchant loop-slot with punch 2
+					else if loop-slot is a boots:
+						enchant loop-slot with feather falling 4
+
+						
 		
-		if {_p}'s held item is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-			if {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##F10303>🔺 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Strength.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Strength.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+		if loop-player's held item is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+			if {Puff.Power2.Enchanting.Cooldown.%uuid of loop-player%} is false:
+				send "<##EFEFEF>🔺 <##B8FFFB>Auto Enchanting" to loop-player
+				set {Puff.Power2.Enchanting.Minute.%uuid of loop-player%} to 10
+				set {Puff.Power2.Enchanting.Second.%uuid of loop-player%} to 0
+				set {Puff.Power2.Enchanting.Cooldown.%uuid of loop-player%} to true
+				loop all items in loop-player's inventory:
+				
+					if loop-slot is a bow:
+						enchant loop-slot with power 3
+						enchant loop-slot with punch 1
 
 
 
-
-		if {_p}'s held item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
-			if {Puff.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##EFEFEF>🔮 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Puff.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Puff.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Puff.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+		if loop-player's held item is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+			if {Wealth.Power2.Enchanting.Cooldown.%uuid of loop-player%} is false:
+				send "<##0EC912>🔮 <##B8FFFB>Auto Enchanting" to loop-player
+				set {Wealth.Power2.Enchanting.Minute.%uuid of loop-player%} to 10
+				set {Wealth.Power2.Enchanting.Second.%uuid of loop-player%} to 0
+				set {Wealth.Power2.Enchanting.Cooldown.%uuid of loop-player%} to true
+				loop all items in loop-player's inventory:
+					
+					if loop-slot is a pickaxe:
+						enchant loop-slot with fortune 3
+						enchant loop-slot with mending 3
+					else if loop-slot is a sword:
+						enchant loop-slot with looting 3
+						
 		
-		if {_p}'s held item is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
-			if {Puff.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##EFEFEF>🔺 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Puff.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Puff.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Puff.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+		if loop-player's held item is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+			if {Wealth.Power2.Enchanting.Cooldown.%uuid of loop-player%} is false:
+				send "<##0EC912>🔺 <##B8FFFB>Auto Enchanting" to loop-player
+				set {Wealth.Power2.Enchanting.Minute.%uuid of loop-player%} to 10
+				set {Wealth.Power2.Enchanting.Second.%uuid of loop-player%} to 0
+				set {Wealth.Power2.Enchanting.Cooldown.%uuid of loop-player%} to true
+				loop all items in loop-player's inventory:
+				
+					if loop-slot is a pickaxe:
+						enchant loop-slot with fortune 1
+						enchant loop-slot with mending 1
+					else if loop-slot is a sword:
+						enchant loop-slot with looting 1
 
 
 
-	if {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-		set {Strength.Power2.Enchanting.Display.%{_uuid}%} to "&aReady!"
-		if {_p}'s held item is prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
-			if {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##F10303>🔮 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Strength.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Strength.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+
+		if loop-player's held item is prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+			if {-Speed.Power2.Enchanting.Cooldown.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} is false:
+				send "<##FEFD17>🔮 <##B8FFFB>Auto Enchanting" to loop-player
+				set {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to 10
+				set {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to 0
+				set {-Speed.Power2.Enchanting.Cooldown.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to true
+				loop all items in loop-player's inventory:
+					
+					if loop-slot is a pickaxe:
+						enchant loop-slot with efficiency 5
 		
-		if {_p}'s held item is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-			if {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} is false:
-				send "<##F10303>🔺 <##A4FEF1>Auto Enchanting" to {_p}
-				set {Strength.Power2.Enchanting.Minute.%{_uuid}%} to 14
-				set {Strength.Power2.Enchanting.Second.%{_uuid}%} to 59
-				set {Strength.Power2.Enchanting.Cooldown.%{_uuid}%} to true
+		if loop-player's held item is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+			if {-Speed.Power2.Enchanting.Cooldown.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} is false:
+				send "<##FEFD17>🔺 <##B8FFFB>Auto Enchanting" to loop-player
+				set {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to 10
+				set {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to 0
+				set {-Speed.Power2.Enchanting.Cooldown.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to true
+				loop all items in loop-player's inventory:
+				
+					if loop-slot is a pickaxe:
+						enchant loop-slot with efficiency 2
+						
 
-every 1 tick:
+	
+
+
+every 1 second:
 	loop all players:
-		if {Disabled.%uuid of loop-player%} > 1:
+		if lore of loop-player's held item doesn't contain "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+			if lore of loop-player's offhand item doesn't contain "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+				send action bar "" to loop-player
+
+		if {Disabled.%uuid of loop-player%} > 0:
 
 		else:
-						
-				
-			if loop-player's held item is prismarine shard named "<##ffcc26>&lGold Gem":
-				if custom model data of loop-player's held item is 102:
-					send action bar "%{Gold.Power1.Snap.Display.%uuid of loop-player%}%  %{Gold.Power2.Railer.Display.%uuid of loop-player%}%" to loop-player
-
-				
-			else:
-
-				if loop-player's held item is a prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+			if lore of loop-player's held item doesn't contain "&f&lᴜѕᴇʟᴇѕѕ":
+				if lore of loop-player's off hand item doesn't contain "&f&lᴜѕᴇʟᴇѕѕ":
+					if loop-player's held item is prismarine shard named "<##ffcc26>&lGold Gem":
+						if {GemSelected.%uuid of loop-player%} is "Strength":
+							send action bar "&f🤺 %{Strength.Power1.Frailer.Display.%uuid of loop-player%}%  <##F10303>🔮 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%  &f⚔ %{Strength.Power3.Chad.Display.%uuid of loop-player%}%" to loop-player
 					
-					send action bar "&f🤺 %{Strength.Power1.Frailer.Display.%uuid of loop-player%}%  <##F10303>🔮 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%  &f⚔ %{Strength.Power3.Chad.Display.%uuid of loop-player%}%" to loop-player
-						
-				else:
-
-					if loop-player's held item is a amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-							
-						send action bar "<##F10303>🔺 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-					
-					else:
-					
-
-
-
-
-
-
-
-
-
-
-
-
-						if loop-player's held item is a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+						else if {GemSelected.%uuid of loop-player%} is "Speed":
 							send action bar "%{Speed.Power1.SlothSedative.Display.%uuid of loop-player%}%  <##FEFD17>🔮%{Speed.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Speed.Power3.SpeedStorm.Display.%uuid of loop-player%}%" to loop-player
+
 				
-						else:
+					if loop-player's held item is prismarine shard named "<##ffcc26>&lGold Gem":
+						if {GemSelected.%uuid of loop-player%} is "gold":
+							send action bar "%{Gold.Power2.Railer.Display.%uuid of loop-player%}%  %{Gold.Power1.Snap.Display.%uuid of loop-player%}%" to loop-player
+
+					if loop-player's off hand item is prismarine shard named "<##ffcc26>&lGold Gem":
+						if {GemSelected.%uuid of loop-player%} is "gold":
+							send action bar "%{Gold.Power2.Railer.Display.%uuid of loop-player%}%  %{Gold.Power1.Snap.Display.%uuid of loop-player%}%" to loop-player
+
+					if loop-player's off hand item is prismarine shard named "<##ffcc26>&lGold Gem":
+						if {GemSelected.%uuid of loop-player%} is "Strength":
+							send action bar "&f🤺 %{Strength.Power1.Frailer.Display.%uuid of loop-player%}%  <##F10303>🔮 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%  &f⚔ %{Strength.Power3.Chad.Display.%uuid of loop-player%}%" to loop-player
+					
+						else if {GemSelected.%uuid of loop-player%} is "Speed":
+							send action bar "%{Speed.Power1.SlothSedative.Display.%uuid of loop-player%}%  <##FEFD17>🔮%{Speed.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Speed.Power3.SpeedStorm.Display.%uuid of loop-player%}%" to loop-player
+
+
+						
+					else if "%string tag "PublicBukkitValues;blissgems:gem-type" of nbt compound of loop-player's held item%" is "strength":
+						if "%int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of loop-player's held item%" is "2":
+
+							set {_secfr} to 0
+							set {_secen} to 0
+							set {_secch} to 0
+
+							set {_minfr} to 0
+							set {_minen} to 0
+							set {_minch} to 0
+
+							loop getcooldownvar("Frailer:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%") times:
 								
-
-							if loop-player's held item is a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
-								send action bar "<##FEFD17>🔺%{Speed.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-					
-					
-							else:
-						
-
-
-
-
-
-
-
-
-
-
-
-
-
-								if loop-player's held item is a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
-									send action bar "%{Fire.Power1.Fireball.Display.%uuid of loop-player%}%  <##FE8120>🔮 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Fire.Power3.Campfire.Display.%uuid of loop-player%}%" to loop-player
-						
-						
-								else:
-
-									if loop-player's held item is a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
-										send action bar "<##FE8120>🔺 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+								add 1 to {_secfr}
+								if {_secfr} is 60:
+									add 1 to {_minfr}
+									set {_secfr} to 0
 							
-										
-									else:
-
-
-
-
-
-
-
-
-
-
-
-										if loop-player's held item is a prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
-											send action bar "&f%{Life.Power1.HeartDrainer.Display.%uuid of loop-player%}%  <##FE04B4>🔮%{Life.Power2.Healer.Display.%uuid of loop-player%}%  &f%{Life.Power3.CircleOfLfe.Display.%uuid of loop-player%}%" to loop-player
-								
-								
-								
-										else:
-											if loop-player's held item is a amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
-												send action bar "<##FE04B4>🔺%{Life.Power2.Healer.Display.%uuid of loop-player%}%" to loop-player
-									
-											
-
-
-
-
-
-
-
-
-
-
-
-
-
-											else:
-
-												if loop-player's held item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
-													send action bar "%{Puff.Power3.Breezy.Display.%uuid of loop-player%}%  <##efefef>🔮%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Puff.Power1.Dash.Display.%uuid of loop-player%}%" to loop-player
-										
-										
-										
-												else:
-
-													if loop-player's held item is a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
-														send action bar "<##efefef>🔺%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-											
-													else:
-
-
-
-
-
-
-
-
-
-
-
-														if loop-player's held item is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
-													
-															send action bar "%{Wealth.Power1.Unfortunate.Display.%uuid of loop-player%}%  <##0EC912>🔮%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Wealth.Power3.RichRush.Display.%uuid of loop-player%}%" to loop-player
-												
-							
-															
-												
-															
-														else:
-															if loop-player's held item is a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-
-																send action bar "<##0EC912>🔺%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-								
-
-
-
-
-
-
-
-
-
-
-
-															else:
-
-																if loop-player's held item is a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-																
-																	if {Astra.Power3.Projection.Activated.%uuid of loop-player%} is not true:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-																		send action bar "%{Astra.Power1.Daggers.Display.%uuid of loop-player%}%  <##A01FFF>🔮 %{entity3.%loop-player%::*}%  &f%{Astra.Power3.Projection.Display.%uuid of loop-player%}%" to loop-player
-														
-														
-																else:
-
-																	if loop-player's held item is a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-																		
-																		send action bar "<##A01FFF>🔺%{Astra.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player		
-																		
-																	else:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-																		if loop-player's off hand item is prismarine shard named "<##ffcc26>&lGold Gem":
-																			if custom model data of loop-player's off hand item is 102:
-																				send action bar "%{Gold.Power1.Snap.Display.%uuid of loop-player%}%  %{Gold.Power2.Railer.Display.%uuid of loop-player%}%" to loop-player
-															
-																			
-																		else:
-
-
-																			if loop-player's off hand item is a prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
-					
-																				send action bar "&f🤺 %{Strength.Power1.Frailer.Display.%uuid of loop-player%}%  <##F10303>🔮 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%  &f⚔ %{Strength.Power3.Chad.Display.%uuid of loop-player%}%" to loop-player
-																					
-																			else:
-																	
-																				if loop-player's off hand item is a amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-																						
-																					send action bar "<##F10303>🔺 %{Strength.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-																				
-																				else:
-																				
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																					if loop-player's off hand item is a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
-																						send action bar "%{Speed.Power1.SlothSedative.Display.%uuid of loop-player%}%  <##FEFD17>🔮%{Speed.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Speed.Power3.SpeedStorm.Display.%uuid of loop-player%}%" to loop-player
-																			
-																					else:
-																							
-																	
-																						if loop-player's off hand item is a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
-																							send action bar "<##FEFD17>🔺%{Speed.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-																				
-																				
-																						else:
-																					
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																							if loop-player's off hand item is a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
-																								send action bar "%{Fire.Power1.Fireball.Display.%uuid of loop-player%}%  <##FE8120>🔮 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Fire.Power3.Campfire.Display.%uuid of loop-player%}%" to loop-player
-																					
-																					
-																							else:
-																	
-																								if loop-player's off hand item is a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
-																									send action bar "<##FE8120>🔺 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-																						
-																									
-																								else:
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																									if loop-player's off hand item is a prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
-																										send action bar "&f%{Life.Power1.HeartDrainer.Display.%uuid of loop-player%}%  <##FE04B4>🔮%{Life.Power2.Healer.Display.%uuid of loop-player%}%  &f%{Life.Power3.CircleOfLfe.Display.%uuid of loop-player%}%" to loop-player
-																							
-																							
-																							
-																									else:
-																										if loop-player's off hand item is a amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
-																											send action bar "<##FE04B4>🔺%{Life.Power2.Healer.Display.%uuid of loop-player%}%" to loop-player
-																								
-																										
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																										else:
-																	
-																											if loop-player's off hand item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
-																												send action bar "%{Puff.Power3.Breezy.Display.%uuid of loop-player%}%  <##efefef>🔮%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Puff.Power1.Dash.Display.%uuid of loop-player%}%" to loop-player
-																									
-																									
-																									
-																											else:
-																	
-																												if loop-player's off hand item is a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
-																													send action bar "<##efefef>🔺%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-																										
-																												else:
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																													if loop-player's off hand item is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
-																												
-																														send action bar "%{Wealth.Power1.Unfortunate.Display.%uuid of loop-player%}%  <##0EC912>🔮%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Wealth.Power3.RichRush.Display.%uuid of loop-player%}%" to loop-player
-																											
-																						
-																														
-																											
-																														
-																													else:
-																														if loop-player's off hand item is a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-																	
-																															send action bar "<##0EC912>🔺%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
-																							
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																	
-																														else:
-																
-																															if loop-player's off hand item is a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-																																if {Astra.Power3.Projection.Activated.%uuid of loop-player%} is not true:
 			
+							if {_secfr} is 0:
+								if {_minfr} > 0:
+									set {_fr} to "&b%{_minfr}%m"
+				
+			
+							else if {_minfr} > 0:
+								set {_fr} to "&b%{_minfr}%m %{_secfr}%s"					
+			
+							else:
+								set {_fr} to "&b%{_secfr}%s"
+			
+							if {_secfr} is 0:
+								if {_minfr} is 0:
+									set {_fr} to "&aReady!"
+
+
+
+							loop getcooldownvar("Enchanting:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%") times:
+								add 1 to {_secen}
+								if {_secen} is 60:
+									add 1 to {_minen}
+									set {_secen} to 0
+							
+			
+							if {_secen} is 0:
+								if {_minen} > 0:
+									set {_en} to "&b%{_minen}%m"
+				
+			
+							else if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m %{_secen}%s"					
+			
+							else:
+								set {_en} to "&b%{_secen}%s"
+			
+							if {_secen} is 0:
+								if {_minen} is 0:
+									set {_en} to "&aReady!"
+
+
+
+					
+							loop getcooldownvar("Chad:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%") times:
+								add 1 to {_secch}
+								if {_secch} is 60:
+									add 1 to {_minch}
+									set {_secch} to 0
+							
+			
+							if {_secch} is 0:
+								if {_minch} > 0:
+									set {_ch} to "&b%{_minch}%m"
+				
+			
+							else if {_minch} > 0:
+								set {_ch} to "&b%{_minch}%m %{_secch}%s"					
+			
+							else:
+								set {_ch} to "&b%{_secch}%s"
+			
+							if {_secch} is 0:
+								if {_minch} is 0:
+									set {_ch} to "&aReady!"
+
+							
+							
+							
+
+							send action bar "&f🤺 &b%{_fr}%  <##F10303>🔮 %{_en}%  &f⚔ &b%{_ch}%" to loop-player
+
+					
+						else if "%int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of loop-player's held item%" is "1":
+							loop {-Strength.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+								add 60 to {_scoreen}
+			
+							add {-Strength.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoreen}
+							
+							set {_secen} to 0
+							set {_minen} to 0
+							loop {_scoreen} times:
+								add 1 to {_secen}
+								if {_secen} is 60:
+									add 1 to {_minen}
+									set {_secen} to 0
+			
+							
+			
+							if {_secen} is 0:
+								if {_minen} > 0:
+									set {_en} to "&b%{_minen}%m"
+				
+			
+							else if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m %{_secen}%s"					
+			
+							else:
+								set {_en} to "&b%{_secen}%s"
+			
+							if {_scoreen} is 0:
+								set {_en} to "&aReady!"  
+							send action bar "<##F10303>🔺 %{_en}%" to loop-player
+								
+					
+					else if loop-player's held item is a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+						loop {-Speed.Power1.SlothSedative.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+							add 60 to {_scoresl}
+		
+						add {-Speed.Power1.SlothSedative.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoresl}
+
+						set {_secsl} to 0
+						set {_minsl} to 0
+						loop {_scoresl} times:
+							add 1 to {_secsl}
+							if {_secsl} is 60:
+								add 1 to {_minsl}
+								set {_secsl} to 0
+		
+						
+		
+						if {_secsl} is 0:
+							if {_minsl} > 0:
+								set {_sl} to "&b%{_minsl}%m"
+			
+		
+						else if {_minsl} > 0:
+							set {_sl} to "&b%{_minsl}%m %{_secsl}%s"					
+		
+						else:
+							set {_sl} to "&b%{_secsl}%s"
+		
+						if {_scoresl} is 0:
+							set {_sl} to "&aReady!"
+
+
+						loop {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+							add 60 to {_scoreen}
+		
+						add {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoreen}
+						
+						set {_secen} to 0
+						set {_minen} to 0
+						loop {_scoreen} times:
+							add 1 to {_secen}
+							if {_secen} is 60:
+								add 1 to {_minen}
+								set {_secen} to 0
+		
+						
+		
+						if {_secen} is 0:
+							if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m"
+			
+		
+						else if {_minen} > 0:
+							set {_en} to "&b%{_minen}%m %{_secen}%s"					
+		
+						else:
+							set {_en} to "&b%{_secen}%s"
+		
+						if {_scoreen} is 0:
+							set {_en} to "&aReady!"
+
+
+
+				
+						loop {-Speed.Power3.SpeedStorm.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+							add 60 to {_scoress}
+		
+						add {-Speed.Power3.SpeedStorm.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoress}
+						
+						set {_secss} to 0
+						set {_minss} to 0
+						loop {_scoress} times:
+							add 1 to {_secss}
+							if {_secss} is 60:
+								add 1 to {_minss}
+								set {_secss} to 0
+		
+						
+		
+						if {_secss} is 0:
+							if {_minss} > 0:
+								set {_ss} to "&b%{_minss}%m"
+			
+		
+						else if {_minss} > 0:
+							set {_ss} to "&b%{_minss}%m %{_secss}%s"					
+		
+						else:
+							set {_ss} to "&b%{_secss}%s"
+		
+						if {_scoress} is 0:
+							set {_ss} to "&aReady!"
+
+						send action bar "&f🎯 %{_sl}%  <##FEFD17>🔮 %{_en}%  &f🌩 %{_ss}%" to loop-player
+
+				
+					else if loop-player's held item is a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+						loop {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+							add 60 to {_scoreen}
+		
+						add {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoreen}
+						
+						set {_secen} to 0
+						set {_minen} to 0
+						loop {_scoreen} times:
+							add 1 to {_secen}
+							if {_secen} is 60:
+								add 1 to {_minen}
+								set {_secen} to 0
+		
+						
+		
+						if {_secen} is 0:
+							if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m"
+			
+		
+						else if {_minen} > 0:
+							set {_en} to "&b%{_minen}%m %{_secen}%s"					
+		
+						else:
+							set {_en} to "&b%{_secen}%s"
+		
+						if {_scoreen} is 0:
+							set {_en} to "&aReady!"
+
+						send action bar "<##FEFD17>🔺 %{_en}%" to loop-player
+
+					
+					
+					else if loop-player's held item is a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+						send action bar "%{Fire.Power1.Fireball.Display.%uuid of loop-player%}%  <##FE8120>🔮 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Fire.Power3.Campfire.Display.%uuid of loop-player%}%" to loop-player
+						
+						
+					else if loop-player's held item is a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##FE8120>🔺 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+							
+										
+					else if loop-player's held item is a prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+						send action bar "&f%{Life.Power1.HeartDrainer.Display.%uuid of loop-player%}%  <##FE04B4>🔮%{Life.Power2.Healer.Display.%uuid of loop-player%}%  &f%{Life.Power3.CircleOfLfe.Display.%uuid of loop-player%}%" to loop-player
+								
+								
+								
+					else if loop-player's held item is a amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##FE04B4>🔺%{Life.Power2.Healer.Display.%uuid of loop-player%}%" to loop-player
+									
+					else if loop-player's held item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+						send action bar "%{Puff.Power3.Breezy.Display.%uuid of loop-player%}%  <##efefef>🔮%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Puff.Power1.Dash.Display.%uuid of loop-player%}%" to loop-player
+										
+										
+										
+					else if loop-player's held item is a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##efefef>🔺%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+											
+					else if loop-player's held item is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+													
+						send action bar "%{Wealth.Power1.Unfortunate.Display.%uuid of loop-player%}%  <##0EC912>🔮%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Wealth.Power3.RichRush.Display.%uuid of loop-player%}%" to loop-player
+
+					else if loop-player's held item is a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##0EC912>🔺%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+				
+					else if loop-player's held item is a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
 																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																
-																																	send action bar "%{Astra.Power1.Daggers.Display.%uuid of loop-player%}%  <##A01FFF>🔮 %{entity3.%loop-player%::*}%  &f%{Astra.Power3.Projection.Display.%uuid of loop-player%}%" to loop-player
-																																																						
-																													
-																															else:
-																
-																																if loop-player's off hand item is a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-																																	send action bar "<##A01FFF>🔺%{Astra.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player	
+						if {-Astra.Power3.Projection.Activated.%uuid of loop-player%} is not true:
+							loop {-Astra.Power3.Projection.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+								add 60 to {_scorepr}
+			
+							add {-Astra.Power3.Projection.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scorepr}
+	
+							set {_secpr} to 0
+							set {_minpr} to 0
+							loop {_scorepr} times:
+								add 1 to {_secpr}
+								if {_secpr} is 60:
+									add 1 to {_minpr}
+									set {_secpr} to 0
+			
+							
+			
+							if {_secpr} is 0:
+								if {_minpr} > 0:
+									set {_pr} to "&b%{_minpr}%m"
+				
+			
+							else if {_minpr} > 0:
+								set {_pr} to "&b%{_minpr}%m %{_secpr}%s"					
+			
+							else:
+								set {_pr} to "&b%{_secpr}%s"
+			
+							if {_scorepr} is 0:
+								set {_pr} to "&aReady!"
+	
+	
+							if "%{entity.%uuid of loop-player%::*}%" is not "<none>":
+								set {_en} to "%{entity.%uuid of loop-player%::*}% "
+							else:
+								set {_en} to ""
+	
+	
+	
+					
+							loop {-Astra.Power1.Daggers.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} times:
+								add 60 to {_scoreda}
+			
+							add {-Astra.Power1.Daggers.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's held item%} to {_scoreda}
+							
+							set {_secda} to 0
+							set {_minda} to 0
+							loop {_scoreda} times:
+								add 1 to {_secda}
+								if {_secda} is 60:
+									add 1 to {_minda}
+									set {_secda} to 0
+			
+							
+			
+							if {_secda} is 0:
+								if {_minda} > 0:
+									set {_da} to "&b%{_minda}%m"
+				
+			
+							else if {_minda} > 0:
+								set {_da} to "&b%{_minda}%m %{_secda}%s"					
+			
+							else:
+								set {_da} to "&b%{_secda}%s"
+			
+							if {_scoreda} is 0:
+								set {_da} to "&aReady!"
+	
+							
+							 
+							
+	
+							send action bar "&f🔪 &b%{_da}%  <##A01FFF>🔮 %{_en}% &f👻 &b%{_pr}%" to loop-player
+
+					else if loop-player's held item is a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+						
+							
+						send action bar "<##A01FFF>🔺%{Astra.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player		
+							
+					else if loop-player's off hand item is prismarine shard named "<##ffcc26>&lGold Gem":
+						if {GemSelected.%uuid of loop-player%} is "gold":
+							send action bar "%{Gold.Power1.Snap.Display.%uuid of loop-player%}%  %{Gold.Power2.Railer.Display.%uuid of loop-player%}%" to loop-player
+		
+						
+					else if "%string tag "PublicBukkitValues;blissgems:gem-type" of nbt compound of loop-player's off hand item%" is "strength":
+						if "%int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of loop-player's off hand item%" is "2":
+							set {_secfr} to 0
+							set {_secen} to 0
+							set {_secch} to 0
+
+							set {_minfr} to 0
+							set {_minen} to 0
+							set {_minch} to 0
+
+							loop getcooldownvar("Frailer:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%") times:
+								
+								add 1 to {_secfr}
+								if {_secfr} is 60:
+									add 1 to {_minfr}
+									set {_secfr} to 0
+							
+			
+							if {_secfr} is 0:
+								if {_minfr} > 0:
+									set {_fr} to "&b%{_minfr}%m"
+				
+			
+							else if {_minfr} > 0:
+								set {_fr} to "&b%{_minfr}%m %{_secfr}%s"					
+			
+							else:
+								set {_fr} to "&b%{_secfr}%s"
+			
+							if {_secfr} is 0:
+								if {_minfr} is 0:
+									set {_fr} to "&aReady!"
+
+
+
+							loop getcooldownvar("Enchanting:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%") times:
+								add 1 to {_secen}
+								if {_secen} is 60:
+									add 1 to {_minen}
+									set {_secen} to 0
+							
+			
+							if {_secen} is 0:
+								if {_minen} > 0:
+									set {_en} to "&b%{_minen}%m"
+				
+			
+							else if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m %{_secen}%s"					
+			
+							else:
+								set {_en} to "&b%{_secen}%s"
+			
+							if {_secen} is 0:
+								if {_minen} is 0:
+									set {_en} to "&aReady!"
+
+
+
+					
+							loop getcooldownvar("Chad:%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%") times:
+								add 1 to {_secch}
+								if {_secch} is 60:
+									add 1 to {_minch}
+									set {_secch} to 0
+							
+			
+							if {_secch} is 0:
+								if {_minch} > 0:
+									set {_ch} to "&b%{_minch}%m"
+				
+			
+							else if {_minch} > 0:
+								set {_ch} to "&b%{_minch}%m %{_secch}%s"					
+			
+							else:
+								set {_ch} to "&b%{_secch}%s"
+			
+							if {_secch} is 0:
+								if {_minch} is 0:
+									set {_ch} to "&aReady!"
+
+							
+							
+							
+
+							send action bar "&f🤺 &b%{_fr}%  <##F10303>🔮 %{_en}%  &f⚔ &b%{_ch}%" to loop-player
+
+					
+						else if "%int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of loop-player's off hand item%" is "1":
+							loop {-Strength.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} times:
+								add 60 to {_scoreen}
+			
+							add {-Strength.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} to {_scoreen}
+							
+							set {_secen} to 0
+							set {_minen} to 0
+							loop {_scoreen} times:
+								add 1 to {_secen}
+								if {_secen} is 60:
+									add 1 to {_minen}
+									set {_secen} to 0
+			
+							
+			
+							if {_secen} is 0:
+								if {_minen} > 0:
+									set {_en} to "&b%{_minen}%m"
+				
+			
+							else if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m %{_secen}%s"					
+			
+							else:
+								set {_en} to "&b%{_secen}%s"
+			
+							if {_scoreen} is 0:
+								set {_en} to "&aReady!"  
+							send action bar "<##F10303>🔺 %{_en}%" to loop-player
+
+						
+					else if loop-player's off hand item is a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+						loop {-Speed.Power1.SlothSedative.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} times:
+							add 60 to {_scoresl}
+		
+						add {-Speed.Power1.SlothSedative.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} to {_scoresl}
+
+						set {_secsl} to 0
+						set {_minsl} to 0
+						loop {_scoresl} times:
+							add 1 to {_secsl}
+							if {_secsl} is 60:
+								add 1 to {_minsl}
+								set {_secsl} to 0
+		
+						
+		
+						if {_secsl} is 0:
+							if {_minsl} > 0:
+								set {_sl} to "&b%{_minsl}%m"
+			
+		
+						else if {_minsl} > 0:
+							set {_sl} to "&b%{_minsl}%m %{_secsl}%s"					
+		
+						else:
+							set {_sl} to "&b%{_secsl}%s"
+		
+						if {_scoresl} is 0:
+							set {_sl} to "&aReady!"
+
+
+						loop {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} times:
+							add 60 to {_scoreen}
+		
+						add {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} to {_scoreen}
+						
+						set {_secen} to 0
+						set {_minen} to 0
+						loop {_scoreen} times:
+							add 1 to {_secen}
+							if {_secen} is 60:
+								add 1 to {_minen}
+								set {_secen} to 0
+		
+						
+		
+						if {_secen} is 0:
+							if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m"
+			
+		
+						else if {_minen} > 0:
+							set {_en} to "&b%{_minen}%m %{_secen}%s"					
+		
+						else:
+							set {_en} to "&b%{_secen}%s"
+		
+						if {_scoreen} is 0:
+							set {_en} to "&aReady!"
+
+
+
+				
+						loop {-Speed.Power3.SpeedStorm.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} times:
+							add 60 to {_scoress}
+		
+						add {-Speed.Power3.SpeedStorm.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} to {_scoress}
+						
+						set {_secss} to 0
+						set {_minss} to 0
+						loop {_scoress} times:
+							add 1 to {_secss}
+							if {_secss} is 60:
+								add 1 to {_minss}
+								set {_secss} to 0
+		
+						
+		
+						if {_secss} is 0:
+							if {_minss} > 0:
+								set {_ss} to "&b%{_minss}%m"
+			
+		
+						else if {_minss} > 0:
+							set {_ss} to "&b%{_minss}%m %{_secss}%s"					
+		
+						else:
+							set {_ss} to "&b%{_secss}%s"
+		
+						if {_scoress} is 0:
+							set {_ss} to "&aReady!"
+
+						send action bar "&f🎯 %{_sl}%  <##FEFD17>🔮 %{_en}%  &f🌩 %{_ss}%" to loop-player
+
+					else if loop-player's off hand item is a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+						loop {-Speed.Power2.Enchanting.Minute.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} times:
+							add 60 to {_scoreen}
+		
+						add {-Speed.Power2.Enchanting.Second.%string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of loop-player's off hand item%} to {_scoreen}
+						
+						set {_secen} to 0
+						set {_minen} to 0
+						loop {_scoreen} times:
+							add 1 to {_secen}
+							if {_secen} is 60:
+								add 1 to {_minen}
+								set {_secen} to 0
+		
+						
+		
+						if {_secen} is 0:
+							if {_minen} > 0:
+								set {_en} to "&b%{_minen}%m"
+			
+		
+						else if {_minen} > 0:
+							set {_en} to "&b%{_minen}%m %{_secen}%s"					
+		
+						else:
+							set {_en} to "&b%{_secen}%s"
+		
+						if {_scoreen} is 0:
+							set {_en} to "&aReady!"
+
+						send action bar "<##FEFD17>🔺 %{_en}%" to loop-player
+					
+					
+					else if loop-player's off hand item is a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+						send action bar "%{Fire.Power1.Fireball.Display.%uuid of loop-player%}%  <##FE8120>🔮 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Fire.Power3.Campfire.Display.%uuid of loop-player%}%" to loop-player
+						
+						
+					else if loop-player's off hand item is a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##FE8120>🔺 %{Fire.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+							
+										
+					else if loop-player's off hand item is a prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+						send action bar "&f%{Life.Power1.HeartDrainer.Display.%uuid of loop-player%}%  <##FE04B4>🔮%{Life.Power2.Healer.Display.%uuid of loop-player%}%  &f%{Life.Power3.CircleOfLfe.Display.%uuid of loop-player%}%" to loop-player
+								
+
+					else if loop-player's off hand item is a amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##FE04B4>🔺%{Life.Power2.Healer.Display.%uuid of loop-player%}%" to loop-player
+									
+					else if loop-player's off hand item is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+						send action bar "%{Puff.Power3.Breezy.Display.%uuid of loop-player%}%  <##efefef>🔮%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%  &f%{Puff.Power1.Dash.Display.%uuid of loop-player%}%" to loop-player
+										
+										
+										
+					else if loop-player's off hand item is a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##efefef>🔺%{Puff.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+				
+					else if loop-player's off hand item is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+					
+						send action bar "%{Wealth.Power1.Unfortunate.Display.%uuid of loop-player%}%  <##0EC912>🔮%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%  %{Wealth.Power3.RichRush.Display.%uuid of loop-player%}%" to loop-player
+				
+					else if loop-player's off hand item is a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+
+						send action bar "<##0EC912>🔺%{Wealth.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player
+
+					else if loop-player's off hand item is a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
+						if {-Astra.Power3.Projection.Activated.%uuid of loop-player%} is not true:
+							if "%{entity.%uuid of loop-player%::*}%" is not "<none>":
+								send action bar "%{Astra.Power1.Daggers.Display.%uuid of loop-player%}%  <##A01FFF>🔮 %{entity.%uuid of loop-player%::*}%  &f%{Astra.Power3.Projection.Display.%uuid of loop-player%}%" to loop-player
+			
+							else:
+								send action bar "%{Astra.Power1.Daggers.Display.%uuid of loop-player%}%  <##A01FFF>🔮  &f%{Astra.Power3.Projection.Display.%uuid of loop-player%}%" to loop-player
+
+					else if loop-player's off hand item is a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+						send action bar "<##A01FFF>🔺%{Astra.Power2.Enchanting.Display.%uuid of loop-player%}%" to loop-player	
 
 
 
@@ -632,115 +1043,35 @@ on join:
 
 
 
-on inventory click:
-	if name of event-inventory is "CHEST":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "LARGE CHEST":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
+on drop:
+	if nbt compound of event-item has tag "PublicBukkitValues;blissgems:gem-type":
+		if int tag "PublicBukkitValues;blissgems:quick-no-drop" of nbt compound of event-item is not 1:
 			cancel event
 
-	if name of event-inventory is "BARREL":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "FURNACE":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "BLAST FURNACE":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "SMOKER":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "ENDER CHEST":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "BOAT WITH CHEST":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "SHULKER BOX":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
 
-	if name of event-inventory is "Dropper":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "Minecart with Hopper":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "Minecart with Chest":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "Item Hopper":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-			
-	if name of event-inventory is "Dispenser":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-
-	if name of event-inventory is "Repair & Name":
-		if lore of item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-
-			
-
-
-
-on inventory click:
-	if event-inventory is crafting table inventory:
-		if index of event-slot is 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9:
-			if lore of event-item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-				cancel event
-			if lore of event-item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-				cancel event
-
-
-on inventory click:
-	if click type is number key:
-		if lore of slot hotbar button of player's inventory contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-
-on inventory click:
-	if click type is swap offhand:
-		if lore of player's off hand item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
-
-on inventory click:
-	if click type is shift+lmb:
-		if lore of slot hotbar button of player's inventory contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-			cancel event
+on right click on entity:
+	if nbt compound of item has tag "PublicBukkitValues;blissgems:gem-type":
+		cancel event
 
 
 #item frame fix
 on right click on itemframe:
-	if lore of player's held item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
+	if nbt compound of player's held item has tag "PublicBukkitValues;blissgems:gem-type":
 		cancel event
 
 on right click on entity:
 	if entity is an item frame:
-		if lore of player's held item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
+		if nbt compound of player's held item has tag "PublicBukkitValues;blissgems:gem-type":
 			cancel event
 
 on itemframe place:
-	if lore of event-item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
+	if nbt compound of event-item has tag "PublicBukkitValues;blissgems:gem-type":
 		cancel event
 
-	if event-item is player head named "<##E9C2FF><bold>ᴛʀᴀᴅᴇʀ":
+	if event-item is player head named "<##E9C2FF>&lᴛʀᴀᴅᴇʀ":
 		cancel event
 
-	if event-item is player head named "<##ACFF82><bold>ᴜᴘɢʀᴀᴅᴇʀ":
+	if event-item is player head named "<##ACFF82>&lᴜᴘɢʀᴀᴅᴇʀ":
 		cancel event
 
 
@@ -762,28 +1093,22 @@ on join:
 
 
 
-#Plugin designed By SoulPheoniXYT please do not edit the code or it might break the plugin
-#Fixed by HyperDondon and others in the discord server https://discord.gg/7GyUbdsDbG
-
-#Death MSG's
 
 
 
 
 
-on drop amethyst shard:
-	if lore of event-item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-		cancel event
-
-on drop prismarine shard:
-	if lore of event-item contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-		cancel event
 
 
-command /shard:
-	permission: op
-	trigger:
-		give player nautilus shell with custom model data 240 named "&fShards" 
+
+
+
+
+
+#command /shard:
+	#permission: op
+	#trigger:
+		#give player nautilus shell with custom model data 240 named "&fShards" 
 
 
 
@@ -835,25 +1160,25 @@ command /shard:
 
 
 
-on death of warden:
-	if victim's name is "&cNetherite Warden":
-		drop netherite leggings
-		drop netherite chestplate
-		drop netherite sword
-		drop netherite boots
-		drop netherite helmet
-		broadcast "&cWarden was slain"
+#on death of warden:
+#	if victim's name is "&cNetherite Warden":
+#		drop netherite leggings
+#		drop netherite chestplate
+#		drop netherite sword
+#		drop netherite boots
+#		drop netherite helmet
+#		broadcast "&cWarden was slain"
 
 		
 
-command /warden:
-	permission: op
-	trigger:
-		spawn warden at player
-		set last spawned warden's name to "&cNetherite Warden"
-		broadcast "&cWarden has spawned at %player's x coordinate%z %player's y coordinate%y %player's z coordinate%z"
-		set last spawned entity's max health to 1000
-		apply regeneration 20 to last spawned entity for 10 seconds
+#command /warden:
+#	permission: op
+#	trigger:
+#		spawn warden at player
+#		set last spawned warden's name to "&cNetherite Warden"
+#		broadcast "&cWarden has spawned at %player's x coordinate%z %player's y coordinate%y %player's z coordinate%z"
+#		set last spawned entity's max health to 1000
+#		apply regeneration 20 to last spawned entity for 10 seconds
 		
 
 
@@ -867,6 +1192,7 @@ command /cooldown <player>:
 	permission: op
 	trigger:
 		set {_uuid} to uuid of arg-1
+		set {Disabled.%{_uuid}%} to 0
 		#Fire Gem
 		set {Fire.Power3.Campfire.Minute.%{_uuid}%} to -1
 		set {Fire.Power2.Enchanting.Minute.%{_uuid}%} to -1
@@ -951,9 +1277,8 @@ command /cooldown <player>:
 
 on join:
 	set {_uuid} to uuid of player
-	if {Gem.%{_uuid}%} is not set:
-		set {Bliss.GemHealth.%{_uuid}%} to 6
-		set {Bliss.Tier.%{_uuid}%} to 1
+	if {Bliss.GemHealth.%{_uuid}%} is not set:
+		set {Bliss.GemHealth.%{_uuid}%} to 5
 		execute console command "firstgem %player%"
 
 	if {Disabled.%{_uuid}%} is not set:
@@ -961,10 +1286,19 @@ on join:
 
 	if {ShotFireball.%{_uuid}%} is not set:
 		set {ShotFireball.%{_uuid}%} to false
+		
 	if {Bliss.Particles.Selected.%{_uuid}%} is not set:
-		add player to {Bliss.Particles.Normal::*}
+		add player to {Bliss.Particles.Default::*}
 		set {Bliss.Particles.Selected.%{_uuid}%} to 1
 
+on left click:
+	if nbt compound of player's held item has tag "PublicBukkitValues;blissgems:gem-type":
+		cancel event
+
+on right click:
+	if nbt compound of player's held item has tag "PublicBukkitValues;blissgems:gem-type":
+		cancel event
+		
 
 #Anti drop
 
@@ -973,7 +1307,7 @@ on join:
 
 on death of player:
 	loop the drops:
-		if lore of loop-value contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
+		if lore of loop-value contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
 			remove loop-value from the drops
 
 
@@ -981,7 +1315,7 @@ on death of player:
 
 on join:
 	if {revived.%uuid of player%} is true:
-		if player does not have a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+		if player does not have a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
 			if player does not have a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
 				if player does not have a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
 					if player does not have a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
@@ -991,7 +1325,7 @@ on join:
 									if player does not have a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
 										if player does not have a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
 											if player does not have a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
-												if player does not have a prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+												if player does not have a prismarine shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
 													if player does not have a amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
 														if player does not have a prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
 															if player does not have a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
@@ -1012,7 +1346,7 @@ command /trust [<text>] [<offlineplayer>]:
 			loop {Bliss.Trusted.%{_uuid}%::*}:
 
 				set {_p} to loop-value parsed as offline player
-				set slot {_s} of {_Bliss.Trusted.GUI} to {_p}'s skull named "&e%{_p}%" with lore "&cClick to remove"
+				set slot {_s} of {_Bliss.Trusted.GUI} to {_p}'s skull named "<##B8FFFB>%{_p}%" with lore "" and "&fClick to &cuntrust"
 				add 1 to {_s}
 
 			open {_Bliss.Trusted.GUI} to player
@@ -1020,7 +1354,7 @@ command /trust [<text>] [<offlineplayer>]:
 		if arg-1 is "add":
 			if arg-2 is set:
 				if {Bliss.Trusted.%{_uuid}%::*} contains {_arguuid}:
-					send "<##FFE4AB>🔮 <##A4FEF1>%arg-2% &cis already trusted!" to player
+					send "<##FFD773>🔮 <##B8FFFB>%arg-2% &cis already trusted!" to player
 
 
 
@@ -1030,30 +1364,29 @@ command /trust [<text>] [<offlineplayer>]:
 					set {_uuid} to uuid of player
 					add {_arguuid} to {Bliss.Trusted.%{_uuid}%::*}
 
-					send "<##FFE4AB>🔮 &aTrusted <##A4FEF1>%arg-2%" to player
+					send "<##FFD773>🔮 &aTrusted <##B8FFFB>%arg-2%" to player
 					
 
 		if arg-1 is "remove":
 			if arg-2 is set:
 				if {Bliss.Trusted.%{_uuid}%::*} contains {_arguuid}:
-					send "<##FFE4AB>🔮 &cUntrusted <##A4FEF1>%arg-2%" to player
+					send "<##FFD773>🔮 &cUntrusted <##B8FFFB>%arg-2%" to player
 					remove {_arguuid} from {Bliss.Trusted.%{_uuid}%::*}
 
 on inventory click:
 	if name of event-inventory is "<##FFE4AB>ᴛʀᴜsᴛᴇᴅ ᴘʟᴀʏᴇʀs":
 		cancel event
 		if event-item is a player head:
-			close player's inventory
+			
 
 			set {_T} to "%event-item's name%"
-			replace all "&e" with "" in {_T}
-			replace all "§e" with "" in {_T}
+			replace all "<##B8FFFB>" with "" in {_T}
 			set {_Tplayer} to "%{_T}%" parsed as offline player
-			broadcast {_Tplayer}
 
 			set {_uuid} to uuid of player
-			send "<##FFE4AB>🔮 &cUntrusted <##A4FEF1>%{_T}%" to player
+			send "<##FFD773>🔮 &cUntrusted <##B8FFFB>%{_T}%" to player
 			remove {_Tplayer}'s uuid from {Bliss.Trusted.%{_uuid}%::*}
+			remove event-item from player's current inventory
 		
 
 on inventory click:
@@ -1062,11 +1395,11 @@ on inventory click:
 
 
 #on inventory click:
-#    set {_clickedslot} to clicked slot
+#	set {_clickedslot} to clicked slot
 
-#    if lore of {_clickedslot} contains "<##FFE4AB>ᴘᴀssɪᴠᴇs":
-#        if {_clickedslot} is not player's inventory:
-#            cancel event
+#	if lore of {_clickedslot} contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+#		if {_clickedslot} is not player's inventory:
+#			cancel event
 
 
 
@@ -1074,15 +1407,274 @@ on inventory click:
 
 
 on tab complete for "/trust":
-    set tab completions for position 1 to "add" and "remove" and "list"
-					
+	set tab completions for position 1 to "add" and "remove" and "list"
+
+
+
+
+				
 
 
 
 
 
 
+function Silentexec(c: text):
+	if gamerule sendCommandFeedback of world "world" is true:
+		set the gamerule sendCommandFeedback of world "world" to false
+		set {_cMF_set_back_true_overworld} to true 
+	
+	if gamerule sendCommandFeedback of world "world_nether" is true:
+		set the gamerule sendCommandFeedback of world "world_nether" to false
+		set {_cMF_set_back_true_nether} to true 
+
+	if gamerule sendCommandFeedback of world "world_the_end" is true:
+		set the gamerule sendCommandFeedback of world "world_the_end" to false
+		set {_cMF_set_back_true_end} to true
+
+
+	if gamerule logAdminCommands of world "world" is true:
+		set the gamerule logAdminCommands of world "world" to false
+		set {_lAC_set_back_true_overworld} to true 
+	
+	if gamerule logAdminCommands of world "world_nether" is true:
+		set the gamerule logAdminCommands of world "world_nether" to false
+		set {_lAC_set_back_true_nether} to true 
+
+	if gamerule logAdminCommands of world "world_the_end" is true:
+		set the gamerule logAdminCommands of world "world_the_end" to false
+		set {_lAC_set_back_true_end} to true
+
+
+	execute console command "%{_c}%"
+
+	if {_cMF_set_back_true_overworld} is true:
+		set the gamerule sendCommandFeedback of world "world" to true
+
+	if {_cMF_set_back_true_nether} is true:
+		set the gamerule sendCommandFeedback of world "world_nether" to true
+
+	if {_cMF_set_back_true_end} is true:
+		set the gamerule sendCommandFeedback of world "world_the_end" to true
 
 
 
+	if {_lAC_set_back_true_overworld} is true:
+		set the gamerule logAdminCommands of world "world" to true
+
+	if {_lAC_set_back_true_nether} is true:
+		set the gamerule logAdminCommands of world "world_nether" to true
+
+	if {_lAC_set_back_true_end} is true:
+		set the gamerule logAdminCommands of world "world_the_end" to true
+
+
+
+
+
+
+function givegem(gem: string, tier: integer, p: entity, energy: integer, nodrop: int, quicknoremove: int, silent: string):
+	set {_i} to getgemback({_gem}, {_tier}, {_energy}, {_nodrop}, {_quicknoremove})
+	broadcast {_energy}
+
+	if {_gem} is "strength":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+	
+	else if {_gem} is "speed":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	else if {_gem} is "fire":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##FE8120>&lғɪʀᴇ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	else if {_gem} is "life":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##FE04B4>&lʟɪғᴇ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	else if {_gem} is "puff":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	else if {_gem} is "wealth":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	else if {_gem} is "astra":
+		if {_silent} is "false":
+			send "<##FFD773>🔮 <##B8FFFB>You have received <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem &7Tier &b%{_tier}%" to {_p}
+
+	give {_p} {_i}
+
+
+
+
+
+
+function getgemback(gem: string, tier: integer, energy: integer, nodrop: int, quicknoremove: int) :: item:
+	set {_id} to random uuid
+	return getgembackwithoutid({_gem}, {_tier}, {_energy}, {_nodrop}, {_quicknoremove}, {_id})
+	
+
+
+
+
+
+
+function getgembackwithoutid(gem: string, tier: integer, energy: integer, nodrop: int, quicknoremove: int, id: string) :: item:
+	if {_energy} > 9:
+		set {_ecode} to "Pristine+5"
+
+	else if {_energy} is 9:
+		set {_ecode} to "Pristine+4"
+
+	else if {_energy} is 8:
+		set {_ecode} to "Pristine+3"
+
+	else if {_energy} is 7:
+		set {_ecode} to "Pristine+2"
+
+	else if {_energy} is 6:
+		set {_ecode} to "Pristine+1"
+
+	else if {_energy} is 5:
+		set {_ecode} to "Pristine"
+
+	else if {_energy} is 4:
+		set {_ecode} to "Scratched"
+
+	else if {_energy} is 3:
+		set {_ecode} to "Cracked"
+
+	else if {_energy} is 2:
+		set {_ecode} to "Damaged"
+
+	else if {_energy} is 1:
+		set {_ecode} to "Ruined"
+
+	else if {_energy} < 1:
+		set {_ecode} to "Broken"
+
+	set {_i} to {Gems.%{_gem}%.%{_ecode}%.Tier.%{_tier}%}
+	
+	set string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of {_i} to {_id}
+	set int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of {_i} to {_tier}
+	set string tag "PublicBukkitValues;blissgems:gem-type" of nbt compound of {_i} to {_gem}
+	set int tag "PublicBukkitValues;blissgems:quick-no-drop" of nbt compound of {_i} to {_nodrop}
+	set int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of {_i} to {_quicknoremove}
+
+	registergem({_id}, {_gem})
+
+
+	return {_i}
+
+
+
+
+
+command /haha:
+	trigger:
+		set player's held item to getgemback("strength", 2, 10, 1, 1)
+		set {_random} to random uuid
+		set {_i} to {Gems.strength.pristine+5.Tier.1}
+		set string tag "PublicBukkitValues;blissgems:gem-id" of nbt compound of {_i} to {_random}
+		set int tag "PublicBukkitValues;blissgems:gem-tier" of nbt compound of {_i} to 2
+		set string tag "PublicBukkitValues;blissgems:gem-type" of nbt compound of {_i} to "strength"
+		set int tag "PublicBukkitValues;blissgems:quick-no-drop" of nbt compound of {_i} to 1
+		set int tag "PublicBukkitValues;blissgems:quick-no-remove" of nbt compound of {_i} to 1
+		
+		give {_i} to player
+
+
+function setcooldownvar(name: string, value: number):
+	set {_c} to criteria with id "blissgems"
+
+	set {_cooldowns} to objective with id "Cooldowns" with criteria {_c} named "Cooldowns" with render type integer in display slot player_list
+	#Set the score
+	set score of "%{_name}%" for {_cooldowns} to {_value}
+	
+function getcooldownvar(name: string) :: number:
+	set {_c} to criteria with id "blissgems"
+
+	set {_cooldowns} to objective with id "Cooldowns" with criteria {_c} named "Cooldowns" with render type integer in display slot player_list
+	#Return the score
+	return score of "%{_name}%" for {_cooldowns}
+
+
+
+function setpowervar(name: string, value: number):
+	set {_c} to criteria with id "blissgems"
+
+	set {_powers} to objective with id "Powers" with criteria {_c} named "Powers" with render type integer in display slot player_list
+	#Set the score
+	set score of "%{_name}%" for {_powers} to {_value}
+	
+function getpowervar(name: string) :: number:
+	set {_c} to criteria with id "blissgems"
+
+	set {_powers} to objective with id "Powers" with criteria {_c} named "Powers" with render type integer in display slot player_list
+	#Return the score
+	return score of "%{_name}%" for {_powers}
+
+
+
+function registergem(id: string, gem: string):
+	set {_c} to criteria with id "blissgems"
+
+	set {_cooldowns} to objective with id "RegisteredGems" with criteria {_c} named "RegisteredGems" with render type integer in display slot player_list
+	set score of "%{_id}%" for {_cooldowns} to {_value}
+
+
+	if {_gem} is "strength":
+
+		setcooldownvar("Frailer:%{_id}%", 0)
+		setcooldownvar("Enchanting:%{_id}%", 0)
+		setcooldownvar("Chad:%{_id}%", 0)
+
+	
+	if {_gem} is "speed":
+		if {-Speed.Power3.SpeedStorm.Second.%{_id}%} is not set:
+			set {-Speed.Power3.SpeedStorm.Second.%{_id}%} to 0
+			set {-Speed.Power3.SpeedStorm.Minute.%{_id}%} to 0
+			set {-Speed.Power3.SpeedStorm.Chad.Cooldown.%{_id}%} to false
+
+
+		if {-Speed.Power2.Enchanting.Second.%{_id}%} is not set:
+			set {-Speed.Power2.Enchanting.Second.%{_id}%} to 0
+			set {-Speed.Power2.Enchanting.Minute.%{_id}%} to 0
+			set {-Speed.Power2.Enchanting.Cooldown.%{_id}%} to false
+
+
+		if {-Speed.Power1.SlothSedative.Second.%{_id}%} is not set:
+			set {-Speed.Power1.SlothSedative.Second.%{_id}%} to 0
+			set {-Speed.Power1.SlothSedative.Minute.%{_id}%} to 0
+			set {-Speed.Power1.SlothSedative.Cooldown.%{_id}%} to false
+
+
+	if {_gem} is "fire":
+
+
+	if {_gem} is "life":
+
+
+	if {_gem} is "puff":
+
+
+	if {_gem} is "wealth":
+
+
+	if {_gem} is "astra":
+
+
+
+function isregisteredgem(id: string) :: boolean:
+	set {_c} to criteria with id "blissgems"
+
+	set {_cooldowns} to objective with id "RegisteredGems" with criteria {_c} named "RegisteredGems" with render type integer in display slot player_list
+	
+	set {_score} to score of "%{_id}%" for {_cooldowns}
+
+	if {_score} is set:
+		return true
 

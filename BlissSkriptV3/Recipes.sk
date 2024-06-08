@@ -9,21 +9,21 @@
     #send "<##E9C2FF>ᴛʀᴀᴅᴇʀ" to all players
 
 on load:
-    set {Token} to a nautilus shell named "Totem Token" with custom model data 250
+    set {Token} to a nautilus shell named "&e&l&oᴛᴏᴛᴇᴍ &f&l&oᴛᴏᴋᴇɴ" with lore "" and "&c&oᴡᴀʀɴɪɴɢ: ᴛʜɪѕ ɪѕ ᴜѕᴇᴅ ꜰᴏʀ ᴄʀᴀꜰᴛɪɴɢ ʀᴇᴄɪᴘᴇѕ" with custom model data 250
 
 
-    set {Trader} to a player head named "<##E9C2FF><bold>ᴛʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ɢᴇᴍ ᴛʏᴘᴇ" and "&7ʏᴏᴜ ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ ᴀ ʀᴀɴᴅᴏᴍ ᴛɪᴇʀ ᴏɴᴇ ɢᴇᴍ" and "&cᴡᴀʀɴɪɴɢ: ᴜsɪɴɢ ᴛʜɪs ᴡɪʟʟ ʟᴏsᴇ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ɢᴇᴍ" with custom model data 2 with hidden enchants flag
+    set {Trader} to a player head named "<##E9C2FF>&lᴛʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ɢᴇᴍ ᴛʏᴘᴇ" and "&7ʏᴏᴜ ᴡɪʟʟ ʀᴇᴄᴇɪᴠᴇ ᴀ ʀᴀɴᴅᴏᴍ ᴛɪᴇʀ ᴏɴᴇ ɢᴇᴍ" and "" and "&cᴡᴀʀɴɪɴɢ: ᴜsɪɴɢ ᴛʜɪs ᴡɪʟʟ ʟᴏsᴇ ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ ɢᴇᴍ" with custom model data 2 with hidden enchants flag
     set {Trader.nbt} to nbt compound of {Trader}
-    add nbt compound of "{HideEnchantments:4,Tags:""TraderItemNBT"",SkullOwner:{Id:[I;-1135994195,374558533,-1713180762,2053437446],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY2MjRhNDRlNzdiOTVkYmUxY2M3MzU1MzY5NTNlODQwYmE2YzE5YjAxNTdjNTQ5ZDliODI1MzQ2NDhjOGNlNCJ9fX0=""}]}}}" to {Trader.nbt}
+    add nbt compound of "{Tags:""TraderItemNBT"",SkullOwner:{Id:[I;-1135994195,374558533,-1713180762,2053437446],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY2MjRhNDRlNzdiOTVkYmUxY2M3MzU1MzY5NTNlODQwYmE2YzE5YjAxNTdjNTQ5ZDliODI1MzQ2NDhjOGNlNCJ9fX0=""}]}}}" to {Trader.nbt}
 
 
-    set {Upgrader} to a player head named "<##ACFF82><bold>ᴜᴘɢʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴜᴘɢʀᴀᴅᴇ ʏᴏᴜʀ ɢᴇᴍ" and "&cᴡᴀʀɴɪɴɢ: ᴜᴘɢʀᴀᴅᴇʀ ᴡɪʟʟ ᴅʀᴏᴘ ᴏɴ ᴅᴇᴀᴛʜ" with custom model data 1 with hidden enchants flag
+    set {Upgrader} to a player head named "<##ACFF82>&lᴜᴘɢʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴜᴘɢʀᴀᴅᴇ ʏᴏᴜʀ ɢᴇᴍ" and "" and "&cᴡᴀʀɴɪɴɢ: ᴜᴘɢʀᴀᴅᴇʀ ᴡɪʟʟ ᴅʀᴏᴘ ᴏɴ ᴅᴇᴀᴛʜ" with custom model data 1 with hidden enchants flag
     set {Upgrader.nbt} to nbt compound of {Upgrader}
-    add nbt compound of "{Tags:""UpgraderItemNBT"",SkullOwner:{Id:[I;660124231,2128364985,-1717330005,146378663],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDk5MmU0YThmNDNjNzdhYzJlMmQ3OTJkOTYwNGY2MWYzNDM4N2M4NzdhYmEzNzEyZTQwNDdiNzQwYzU3OCJ9fX0=""}]}}}" to {Upgrader.nbt}
+    add nbt compound of "{SkullOwner:{Id:[I;660124231,2128364985,-1717330005,146378663],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDk5MmU0YThmNDNjNzdhYzJlMmQ3OTJkOTYwNGY2MWYzNDM4N2M4NzdhYmEzNzEyZTQwNDdiNzQwYzU3OCJ9fX0=""}]}}}" to {Upgrader.nbt}
 
-    set {UpgraderGray} to a player head named "&8<bold>ᴜᴘɢʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴜᴘɢʀᴀᴅᴇ ʏᴏᴜʀ ɢᴇᴍ" and "&cᴡᴀʀɴɪɴɢ: ᴜᴘɢʀᴀᴅᴇʀ ᴡɪʟʟ ᴅʀᴏᴘ ᴏɴ ᴅᴇᴀᴛʜ" with custom model data 1 with hidden enchants flag
+    set {UpgraderGray} to a player head named "&8&lᴜᴘɢʀᴀᴅᴇʀ" with lore "&7ʀɪɢʜᴛ-ᴄʟɪᴄᴋ ᴛᴏ ᴜᴘɢʀᴀᴅᴇ ʏᴏᴜʀ ɢᴇᴍ" and "" and "&cᴡᴀʀɴɪɴɢ: ᴜᴘɢʀᴀᴅᴇʀ ᴡɪʟʟ ᴅʀᴏᴘ ᴏɴ ᴅᴇᴀᴛʜ" with custom model data 1 with hidden enchants flag
     set {UpgraderGray.nbt} to nbt compound of {UpgraderGray}
-    add nbt compound of "{Tags:""UpgraderGrayItemNBT"",SkullOwner:{Id:[I;1586457474,-1706211847,-1155448085,-1718512651],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY4MmRlNzJiZjYxYzZkMjMzNjRlMmZlMmQ3Y2MyOGRkZjgzMTQ1ZDE4ZjE5Mzg1N2QzNjljZjlkZjY5MiJ9fX0=""}]}}}" to {UpgraderGray.nbt}
+    add nbt compound of "{SkullOwner:{Id:[I;1586457474,-1706211847,-1155448085,-1718512651],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY4MmRlNzJiZjYxYzZkMjMzNjRlMmZlMmQ3Y2MyOGRkZjgzMTQ1ZDE4ZjE5Mzg1N2QzNjljZjlkZjY5MiJ9fX0=""}]}}}" to {UpgraderGray.nbt}
 
 
     set {GemFragment} to a nautilus shell named "Gem Fragment" with custom model data 240
@@ -49,4 +49,7 @@ on load:
  
     register new shaped recipe for {Revive} using yellow candle, {Repair}, yellow candle, {gemfragment}, recovery compass, {gemfragment}, yellow candle, {Repair}, yellow candle with id "RevivalTome"
 
-    
+command /grayupgrader:
+    permission: op
+    trigger:
+        give player {UpgraderGray}

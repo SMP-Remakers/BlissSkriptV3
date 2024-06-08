@@ -1,24 +1,756 @@
-command /upgradegem <player>:
-	permission: op
-	trigger:
-		set {_uuid} to uuid of arg-1
-		if {Bliss.Disabled.%{_uuid}%} is not true:
-			set {Bliss.Tier.%{_uuid}%} to 2
+function upgrade(p: player):
+	set {_onecycle} to false
+	loop all items in {_p}'s inventory:
+		if {_onecycle} is false:
+			if lore of loop-slot contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+				set {_onecycle} to true
+				if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>5":
+					set {_e} to 10
+		
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>4":
+					set {_e} to 9
+		
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>3":
+					set {_e} to 8
+		
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>2":
+					set {_e} to 7
+		
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>1":
+					set {_e} to 6
+		
+				else if lore of loop-slot contains "<##57FFC7>Pristine":
+					set {_e} to 5
+		
+				else if lore of loop-slot contains "<##57FF8F>Scratched":
+					set {_e} to 4
+		
+				else if lore of loop-slot contains "<##7958DB>Cracked":
+					set {_e} to 3
+		
+				else if lore of loop-slot contains "<##FFC929>Damaged":
+					set {_e} to 2
+		
+				else if lore of loop-slot contains "<##FF1111>Ruined":
+					set {_e} to 1
+		
+				else if lore of loop-slot contains "&f&lᴜѕᴇʟᴇѕѕ":
+					set {_e} to 0
 
-			if arg-1 does not have a prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-				if arg-1 does not have a amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
-					if arg-1 does not have a prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
-						if arg-1 does not have a amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
-							if arg-1 does not have a prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
-								if arg-1 does not have a amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
-									if arg-1 does not have a prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
-										if arg-1 does not have a amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
-											if arg-1 does not have a prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
-												if arg-1 does not have a amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
-													if arg-1 does not have a prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
-														if arg-1 does not have a amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-															if arg-1 does not have a prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
-																if arg-1 does not have a amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
-																	execute console command "givegems %arg-1%"
-																	
-			execute console command "setcorrectgems %arg-1% energy"
+				if loop-slot is amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Astra"
+					if {_e} is 10:
+
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+					
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Damaged.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Astra.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Astra.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Astra.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set lore of loop-slot to lore of {Gems.Astra.Broken.Tier.1}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Astra.Broken.Tier.1}%}" to nbt compound of loop-slot
+						set enchantments of loop-slot to enchantments of {Gems.Astra.Broken.Tier.1}
+
+				if loop-slot is amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Fire"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Fire.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Fire.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Fire.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Fire.Broken.Tier.2}
+						set loop-slot to {_i}
+
+				if loop-slot is amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Life"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Life.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Life.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Life.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Life.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Life.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Life.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Life.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Life.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Life.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Life.Broken.Tier.2}
+						set loop-slot to {_i}
+	
+				if loop-slot is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Puff"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Puff.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Puff.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Puff.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Puff.Broken.Tier.2}
+						set loop-slot to {_i}
+
+				if loop-slot is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Speed"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Speed.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Speed.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Speed.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Speed.Broken.Tier.2}
+						set loop-slot to {_i}
+
+				if loop-slot is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Strength"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Strength.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Strength.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Strength.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Strength.Broken.Tier.2}
+						set loop-slot to {_i}
+
+				if loop-slot is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Wealth"
+					if {_e} is 10:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine+5.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine+5.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine+5.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 9:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine+4.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine+4.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine+4.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 8:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine+3.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine+3.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine+3.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 7:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine+2.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine+2.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine+2.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 6:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine+1.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine+1.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine+1.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 5:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Pristine.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Pristine.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Pristine.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Pristine.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 4:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Scratched.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Scratched.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Scratched.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Scratched.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 3:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Cracked.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Cracked.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Cracked.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Cracked.Tier.2}
+						set loop-slot to {_i}
+
+
+					if {_e} is 2:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Damaged.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Damaged.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Damaged.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 1:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Ruined.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Ruined.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Ruined.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Ruined.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} is 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Broken.Tier.2}
+						set loop-slot to {_i}
+
+					if {_e} < 0:
+						set {_i} to a prismarine shard with hidden enchants flag
+						set lore of {_i} to lore of {Gems.Wealth.Broken.Tier.2}
+						add nbt compound from "{CustomModelData:%custom model data of {Gems.Wealth.Broken.Tier.2}%}" to nbt compound of {_i}
+						set enchantments of {_i} to enchantments of {Gems.Wealth.Broken.Tier.2}
+						set name of {_i} to name of {Gems.Wealth.Broken.Tier.2}
+						set loop-slot to {_i}
+
+
+

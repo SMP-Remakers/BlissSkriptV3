@@ -1,1093 +1,1200 @@
-on death of player:
-	set {_uuid} to uuid of victim
-	if {Bliss.Tier.%{_uuid}%} is 2:
-		drop {Upgrader} at victim
-		if attacker is not set:
-			drop a nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##A4FEF1>&lFrom: <##FFE4AB>%victim%"
-		
-		if attacker is not a player:
-			drop a nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##A4FEF1>&lFrom: <##FFE4AB>%victim%"
 
-	set {Bliss.Tier.%{_uuid}%} to 1
+	
 
-	if {BlissSkriptV3.TestServerMode} is false:
-		remove 1 from {Bliss.GemHealth.%{_uuid}%}
+
 
 on respawn:
+	loop all items in player's inventory:
+		if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>5":
+			set {_energy} to 10
+
+		else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>4":
+			set {_energy} to 9
+
+		else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>3":
+			set {_energy} to 8
+
+		else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>2":
+			set {_energy} to 7
+
+		else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>1":
+			set {_energy} to 6
+
+		else if lore of loop-slot contains "<##57FFC7>Pristine":
+			set {_energy} to 5
+
+		else if lore of loop-slot contains "<##57FF8F>Scratched":
+			set {_energy} to 4
+
+		else if lore of loop-slot contains "<##7958DB>Cracked":
+			set {_energy} to 3
+
+		else if lore of loop-slot contains "<##FFC929>Damaged":
+			set {_energy} to 2
+
+		else if lore of loop-slot contains "<##FF1111>Ruined":
+			set {_energy} to 1
+
+		else if lore of loop-slot contains "&f&lᴜѕᴇʟᴇѕѕ":
+			set {_energy} to 0
+
 	set {_uuid} to uuid of player
-	if {Bliss.GemHealth.%{_uuid}%} < 1:
+	if {_energy} < 0:
 		add {_uuid} to {BannedPlayers::*}
 		kick player due to "Out of energy!"
 		ban player due to "Out of energy!"
 
+on damage:
+	if victim is a player:
+		if attacker is a player:
+			clear {LastAttacker.%victim's uuid%}
+
+
+on death:
+	if victim is a player:
+		if attacker is not a player:
+			set {_p} to {LastAttacker.%victim's uuid%} parsed as offline player
+			set {_uuid} to uuid of {_p}
+			if {Bliss.Disabled.%uuid of victim%} is not true:
+				if {Bliss.Disabled.%{_uuid}%} is not true:
+					loop all items in {LastAttacker.%victim's uuid%}'s inventory:
+						if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>5":
+							set {_energy} to 10
+				
+						else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>4":
+							set {_energy} to 9
+				
+						else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>3":
+							set {_energy} to 8
+				
+						else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>2":
+							set {_energy} to 7
+				
+						else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>1":
+							set {_energy} to 6
+				
+						else if lore of loop-slot contains "<##57FFC7>Pristine":
+							set {_energy} to 5
+				
+						else if lore of loop-slot contains "<##57FF8F>Scratched":
+							set {_energy} to 4
+				
+						else if lore of loop-slot contains "<##7958DB>Cracked":
+							set {_energy} to 3
+				
+						else if lore of loop-slot contains "<##FFC929>Damaged":
+							set {_energy} to 2
+				
+						else if lore of loop-slot contains "<##FF1111>Ruined":
+							set {_energy} to 1
+				
+						else if lore of loop-slot contains "&f&lᴜѕᴇʟᴇѕѕ":
+							set {_energy} to 0
+							
+					if {_energy} < 10:
+						
+
+						add 1 to {Bliss.GemHealth.%{_uuid}%}
+						execute console command "setcorrectgems %attacker% energy"
+
+						set {_onecycle} to false
+						loop all items in attacker's inventory:
+							if {_onecycle} is false:
+								if lore of loop-slot contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+									set {_onecycle} to true
+									if loop-slot is prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Astra"
+									if loop-slot is amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Astra"
+
+									if loop-slot is prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Fire"
+									if loop-slot is amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Fire"
+
+									if loop-slot is prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Life"
+									if loop-slot is amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Life"
+
+									if loop-slot is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Puff"
+									if loop-slot is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Puff"
+
+									if loop-slot is prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Speed"
+									if loop-slot is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Speed"
+
+									if loop-slot is prismarine shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Strength"
+									if loop-slot is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Strength"
+
+									if loop-slot is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+										set {_gem} to "Wealth"
+
+									if loop-slot is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+										set {_gem} to "Wealth"
+
+						if {_gem} is "Strength":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at &7Broken" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at N/A" to attacker
+
+
+
+						if {_gem} is "Speed":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at &7Broken" to attacker
+								
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at N/A" to attacker
+
+
+						if {_gem} is "Fire":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at &7Broken" to attacker
+
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at N/A" to attacker
+
+
+						if {_gem} is "Life":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at &7Broken" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at N/A" to attacker
+
+						if {_gem} is "Puff":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at &7Broken" to attacker
+
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at N/A" to attacker
+
+					
+						if {_gem} is "Wealth":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at &7Broken" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at N/A" to attacker
+
+
+						if {_gem} is "Astra":
+							if {Bliss.GemHealth.%{_uuid}%} is 11:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 10:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 9:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 8:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 7:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 6:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 5:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 4:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 3:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 2:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+							
+							if {Bliss.GemHealth.%{_uuid}%} is 1:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at &7Broken" to attacker
+
+							if {Bliss.GemHealth.%{_uuid}%} is 0:
+								send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at N/A" to attacker
+
+
+
+
+
 
 on death of player:
-	set {_uuid} to uuid of attacker
-	if {Bliss.Disabled.%uuid of victim%} is not true:
-		if {Bliss.Disabled.%{_uuid}%} is not true:
-			if {Bliss.GemHealth.%{_uuid}%} < 11:
-				add 1 to {Bliss.GemHealth.%{_uuid}%}
-				execute console command "setcorrectgems %attacker% energy"
+	if attacker is a player:
+		set {_uuid} to uuid of attacker
+		if {Bliss.Disabled.%uuid of victim%} is not true:
+			if {Bliss.Disabled.%{_uuid}%} is not true:
+				if {Bliss.GemHealth.%{_uuid}%} < 11:
+					add 1 to {Bliss.GemHealth.%{_uuid}%}
+					#broadcast "%{Bliss.GemHealth.%{_uuid}%}%"
+					setenergy(attacker, {Bliss.GemHealth.%{_uuid}%} - 1)
 
-				if {Gem.%{_uuid}%} is "Strength":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
+					set {_onecycle} to false
+					loop all items in attacker's inventory:
+						if {_onecycle} is false:
+							if lore of loop-slot contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+								set {_onecycle} to true
+								if loop-slot is prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Astra"
+								if loop-slot is amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Astra"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
+								if loop-slot is prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Fire"
+								if loop-slot is amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Fire"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
+								if loop-slot is prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Life"
+								if loop-slot is amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Life"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
+								if loop-slot is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Puff"
+								if loop-slot is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Puff"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
+								if loop-slot is prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Speed"
+								if loop-slot is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Speed"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
+								if loop-slot is prismarine shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Strength"
+								if loop-slot is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Strength"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
+								if loop-slot is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+									set {_gem} to "Wealth"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
+								if loop-slot is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+									set {_gem} to "Wealth"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
+					if {_gem} is "Strength":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at &7Broken" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at N/A" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
 
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
 
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
 
-				if {Gem.%{_uuid}%} is "Speed":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at &7Broken" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
 						
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at N/A" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at &7Broken" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at N/A" to attacker
 
 
-				if {Gem.%{_uuid}%} is "Fire":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
+					if {_gem} is "Speed":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
 
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at &7Broken" to attacker
+							
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at N/A" to attacker
+
+
+					if {_gem} is "Fire":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at &7Broken" to attacker
+
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at N/A" to attacker
+
+
+					if {_gem} is "Life":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at &7Broken" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at N/A" to attacker
+
+					if {_gem} is "Puff":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at &7Broken" to attacker
+
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at N/A" to attacker
+
+				
+					if {_gem} is "Wealth":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at &7Broken" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at N/A" to attacker
+
+
+					if {_gem} is "Astra":
+						if {Bliss.GemHealth.%{_uuid}%} is 11:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 10:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 9:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 8:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 7:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 6:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 5:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FF8F>Scratched" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 4:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##7958DB>Cracked" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 3:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FFC929>Damaged" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 2:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FF1111>Ruined" to attacker
+						
+						if {Bliss.GemHealth.%{_uuid}%} is 1:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at &7Broken" to attacker
+
+						if {Bliss.GemHealth.%{_uuid}%} is 0:
+							send "<##B8FFFB>You &agained <##B8FFFB>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at N/A" to attacker
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+on death of player:
+	set {_onecycle} to false
+	loop all items in victim's inventory:
+		if {_onecycle} is false:
+			set {_gemammount} to 0
+			loop all items in victim's inventory:
+				if lore of loop-slot-2 contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+					add 1 to {_gemammount}
+				if {_gemammount} is 0:
+					set {_gemammount} to 1
+
+			if lore of loop-slot contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+				
+				set {_onecycle} to true
+
+				if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>5":
+					set {_energy} to 10
+
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>4":
+					set {_energy} to 9
+
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>3":
+					set {_energy} to 8
+
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>2":
+					set {_energy} to 7
+
+				else if lore of loop-slot contains "<##57FFC7>Pristine &f+ <##96FFD9>1":
+					set {_energy} to 6
+
+				else if lore of loop-slot contains "<##57FFC7>Pristine":
+					set {_energy} to 5
+
+				else if lore of loop-slot contains "<##57FF8F>Scratched":
+					set {_energy} to 4
+
+				else if lore of loop-slot contains "<##7958DB>Cracked":
+					set {_energy} to 3
+
+				else if lore of loop-slot contains "<##FFC929>Damaged":
+					set {_energy} to 2
+
+				else if lore of loop-slot contains "<##FF1111>Ruined":
+					set {_energy} to 1
+
+				else if lore of loop-slot contains "&f&lᴜѕᴇʟᴇѕѕ":
+					set {_energy} to 0
+
+				if loop-slot is prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Astra"
 					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at &7Broken" to attacker
+				if loop-slot is amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Astra"
+
+				if loop-slot is prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Fire"
+				if loop-slot is amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Fire"
+
+				if loop-slot is prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Life"
+				if loop-slot is amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Life"
+
+				if loop-slot is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Puff"
+				if loop-slot is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Puff"
+
+				if loop-slot is prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Speed"
+				if loop-slot is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Speed"
+
+				if loop-slot is prismarine shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Strength"
+				if loop-slot is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Strength"
+
+				if loop-slot is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+					set {_gem} to "Wealth"
+
+				if loop-slot is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+					set {_gem} to "Wealth"
 
 
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at N/A" to attacker
-
-
-				if {Gem.%{_uuid}%} is "Life":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at &7Broken" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at N/A" to attacker
-
-				if {Gem.%{_uuid}%} is "Puff":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at &7Broken" to attacker
-
-
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at N/A" to attacker
-
+	loop all items in victim's inventory:	
+		if lore of loop-slot contains "<##FFE4AB>ᴘᴀssɪᴠᴇs" or "&f&lᴜѕᴇʟᴇѕѕ":
+			if attacker is not set:
+				drop a nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##96FFD9>&lFrom: <##FFE4AB>%victim%"
 			
-				if {Gem.%{_uuid}%} is "Wealth":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
+			else if attacker is not a player:
+				drop a nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##96FFD9>&lFrom: <##FFE4AB>%victim%"
 
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
+			if loop-slot is prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##FFD773>ɢᴇᴍ":
+				add "astra" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ":
+				add "astra" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
+			if loop-slot is prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ":
+				add "fire" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ":
+				add "fire" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
+			if loop-slot is prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ":
+				add "life" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ":
+				add "life" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
+			if loop-slot is prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ":
+				add "puff" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ":
+				add "puff" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
+			if loop-slot is prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ":
+				add "speed" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ":
+				add "speed" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
+			if loop-slot is prismarine shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ":
+				add "strength" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+				add "strength" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
+			if loop-slot is prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ":
+				add "wealth" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 2 to {_GemsToGiveTier::*}
+				drop {Upgrader} at victim
+			if loop-slot is amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ":
+				add "wealth" to {_GemsToGive::*}
+				if {BlissSkriptV3.TestServerMode} is true:
+					add 1 to {_GemsToGiveTier::*}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
+	if {BlissSkriptV3.TestServerMode} is false:
+		remove {_gemammount} from {_energy}
 
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at &7Broken" to attacker
+	wait 1 tick
+	set {_index} to 1
+	loop {_GemsToGive::*}:
+		if {BlissSkriptV3.TestServerMode} is true:
+			give victim getgemback("%loop-value%", {_GemsToGiveTier::%{_index}%}, {_energy}, 3, 3)
+		else:
+			give victim getgemback("%loop-value%", 1, {_energy}, 3, 3)
 
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at N/A" to attacker
-
-
-				if {Gem.%{_uuid}%} is "Astra":
-					if {Bliss.GemHealth.%{_uuid}%} is 11:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 10:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 9:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 8:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 7:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 6:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 5:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##9DF200>Scratched" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 4:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##3F00D1>Cracked" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 3:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##EAC700>Damaged" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 2:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##F10303>Ruined" to attacker
-					
-					if {Bliss.GemHealth.%{_uuid}%} is 1:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at &7Broken" to attacker
-
-					if {Bliss.GemHealth.%{_uuid}%} is 0:
-						send "<##A4FEF1>You &agained <##A4FEF1>energy, your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at N/A" to attacker
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-on death of player:
-	set {_uuid} to uuid of victim
-	if {Bliss.Disabled.%{_uuid}%} is not true:
-		#Strength Gem
-		remove 999 of prismarine shard named "<##F10303>sᴛʀᴇɴɢᴛʜ &r<##FFD773>ɢᴇᴍ" from victim
-
-		remove 999 of amethyst shard named "<##F10303>&lsᴛʀᴇɴɢᴛʜ &r<##C7C7C7>ɢᴇᴍ" from victim
+		add 1 to {_index}
 		
+	if {BlissSkriptV3.TestServerMode} is false:
+		if {_gem} is "Strength":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at &7Broken" to victim
+
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##B8FFFB>gem is now at N/A" to victim
+
+
+
+		if {_gem} is "Speed":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at &7Broken" to victim
+
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FEFD17>&lsᴘᴇᴇᴅ <##B8FFFB>gem is now at N/A" to victim
+
+
+		if {_gem} is "Fire":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at &7Broken" to victim
+
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE8120>&lFɪʀᴇ <##B8FFFB>gem is now at N/A" to victim
+
+
+		if {_gem} is "Life":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at &7Broken" to victim
+
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##FE04B4>&lLɪғᴇ <##B8FFFB>gem is now at N/A" to victim
+
+		if {_gem} is "Puff":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at &7Broken" to victim
+
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##EFEFEF>&lᴘᴜғғ <##B8FFFB>gem is now at N/A" to victim
+
+
+
+		if {_gem} is "Wealth":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
+
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
+
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
+
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
+
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
+
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
+
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
+
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
+
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
+
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at &7Broken" to victim
 		
-		#Speed Gem
-		remove 999 of prismarine shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##FFD773>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##FEFD17>&lsᴘᴇᴇᴅ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
-		
-		#Puff Gem
-		remove 999 of prismarine shard named "<##EFEFEF>&lᴘᴜғғ &r<##FFD773>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##EFEFEF>&lᴘᴜғғ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
-		
-		#Fire Gem
-		remove 999 of prismarine shard named "<##FE8120>&lғɪʀᴇ &r<##FFD773>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##FE8120>&lғɪʀᴇ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
-		
-		#Astra Gem
-		remove 999 of prismarine shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##A01FFF>&lᴀsᴛʀᴀ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
-		
-		#Life Gem
-		
-		remove 999 of prismarine shard named "<##FE04B4>&lʟɪғᴇ &r<##FFD773>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##FE04B4>&lʟɪғᴇ &r<##C7C7C7>ɢᴇᴍ" from victim
-		
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##0EC912>&lᴡᴇᴀʟᴛʜ <##B8FFFB>gem is now at N/A" to victim
 
-		#Wealth Gem
-		
-		remove 999 of prismarine shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##FFD773>ɢᴇᴍ" from victim
-		
-		remove 999 of amethyst shard named "<##0EC912>&lᴡᴇᴀʟᴛʜ &r<##C7C7C7>ɢᴇᴍ" from victim
-		if {Bliss.GemHealth.%{_uuid}%} > 1:
 
-			if {Gem.%{_uuid}%} is "Strength":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
+		if {_gem} is "Astra":
+			if {_energy} is 10:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>5" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
+			if {_energy} is 9:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>4" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
+			if {_energy} is 8:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>3" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
+			if {_energy} is 7:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>2" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
+			if {_energy} is 6:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine &f+ <##96FFD9>1" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
+			if {_energy} is 5:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FFC7>Pristine" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
+			if {_energy} is 4:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##57FF8F>Scratched" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
+			if {_energy} is 3:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##7958DB>Cracked" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You &clost <##A4FEF1>energy, your <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem is now at &7Broken" to victim
+			if {_energy} is 2:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FFC929>Damaged" to victim
 
+			if {_energy} is 1:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at <##FF1111>Ruined" to victim
+			
+			if {_energy} is 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at &7Broken" to victim
 
+			if {_energy} < 0:
+				send "<##B8FFFB>You lost &cenergy<##B8FFFB>, your <##A01FFF>&lᴀsᴛʀᴀ <##B8FFFB>gem is now at N/A" to victim
 
-			if {Gem.%{_uuid}%} is "Speed":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
 
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem is now at &7Broken" to victim
-
-
-			if {Gem.%{_uuid}%} is "Fire":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE8120>&lFɪʀᴇ <##A4FEF1>gem is now at &7Broken" to victim
-
-
-			if {Gem.%{_uuid}%} is "Life":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##FE04B4>&lLɪғᴇ <##A4FEF1>gem is now at &7Broken" to victim
-
-			if {Gem.%{_uuid}%} is "Puff":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem is now at &7Broken" to victim
-
-
-		
-			if {Gem.%{_uuid}%} is "Wealth":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem is now at &7Broken" to victim
-
-
-
-			if {Gem.%{_uuid}%} is "Astra":
-				if {Bliss.GemHealth.%{_uuid}%} is 11:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>5" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 10:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>4" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 9:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>3" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 8:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+ <##A0EEEE>2" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 7:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine &f+" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 6:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##01F5C3>Pristine" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 5:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##9DF200>Scratched" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 4:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##3F00D1>Cracked" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 3:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##EAC700>Damaged" to victim
-
-				if {Bliss.GemHealth.%{_uuid}%} is 2:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at <##F10303>Ruined" to victim
-				
-				if {Bliss.GemHealth.%{_uuid}%} is 1:
-					send "<##A4FEF1>You lost &cenergy, <##A4FEF1>your <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem is now at &7Broken" to victim
-
-
-
-
-
-
-
-
-on respawn:
-	set {_uuid} to uuid of player
-	if {Bliss.Disabled.%{_uuid}%} is not true:
-		if {Gem.%{_uuid}%} is "Strength":
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Strength.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Strength.Broken.Tier.2}
-
-
-		if {Gem.%{_uuid}%} is "Speed":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Speed.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Speed.Broken.Tier.2}	
-					
-		if {Gem.%{_uuid}%} is "Fire":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Fire.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Fire.Broken.Tier.2}	
-					
-		if {Gem.%{_uuid}%} is "Life":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Life.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Life.Broken.Tier.2}	
-
-
-		if {Gem.%{_uuid}%} is "Puff":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Puff.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Puff.Broken.Tier.2}	
-
-		if {Gem.%{_uuid}%} is "Wealth":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Wealth.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Wealth.Broken.Tier.2}	
-
-
-		if {Gem.%{_uuid}%} is "Astra":
-
-			if {Bliss.GemHealth.%{_uuid}%} is 11:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine+5.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine+5.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 10:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine+4.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine+4.Tier.2}		
-
-			if {Bliss.GemHealth.%{_uuid}%} is 9:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine+3.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine+3.Tier.2}	
-						
-			if {Bliss.GemHealth.%{_uuid}%} is 8:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine+2.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine+2.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 7:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine+1.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine+1.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 6:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Pristine.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Pristine.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 5:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Scratched.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Scratched.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 4:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Cracked.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Cracked.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 3:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Damaged.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Damaged.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 2:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Ruined.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Ruined.Tier.2}
-
-			if {Bliss.GemHealth.%{_uuid}%} is 1:
-				if {Bliss.Tier.%{_uuid}%} is 1:
-					give player {Gems.Astra.Broken.Tier.1}
-				if {Bliss.Tier.%{_uuid}%} is 2:
-					give player {Gems.Astra.Broken.Tier.2}	
+	

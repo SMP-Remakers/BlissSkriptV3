@@ -1,1499 +1,982 @@
 command /menu:
-    permission: op
-    trigger:
-        set {_Menu.GUI.Bliss} to a new chest inventory with 6 row with name "<##FFD773>&lMenu"
-        open {_Menu.GUI.Bliss} for player
-        set {_times} to 0
-        loop 54 times:
-            set slot {_times} of player's current inventory to dark gray stained glass pane named "&7."
-            add 1 to {_times} 
+	permission: op
+	trigger:
+		set {_Menu.GUI.Bliss} to a new chest inventory with 5 row with name "<##FFD773>&lMenu"
+		set {_times} to 0
+		loop 45 times:
+			set slot {_times} of {_Menu.GUI.Bliss} to gray stained glass pane named "."
+			add 1 to {_times}
+		set slot 10 of {_Menu.GUI.Bliss} to allay spawn egg named "<##54CCFF>&lCreative <##D6D6D6>Mode" with lore "&7sets you in creative"
+		set slot 12 of {_Menu.GUI.Bliss} to {-Gems.GUI.Item}
+		set slot 14 of {_Menu.GUI.Bliss} to netherrack named "<##B80D0D>&lNether" with lore "<##FFDBDB>teleports you to" and "<##FFDBDB>the nether"
+		set slot 15 of {_Menu.GUI.Bliss} to grass block named "<##9DFF85>&lOverworld" with lore "<##FFDBDB>teleports you to" and "<##FFDBDB>the overworld"
+		set slot 16 of {_Menu.GUI.Bliss} to end stone named "<##E2D1A7>&lThe End" with lore "<##FFDBDB>teleports you to" and "<##FFDBDB>the end"
+		set slot 19 of {_Menu.GUI.Bliss} to slime spawn egg named "<##73D94E>&lSurvival <##D6D6D6>Mode" with lore "&7sets you in survival"
+		set slot 21 of {_Menu.GUI.Bliss} to netherite sword named "<##FF3B3B>&lKits"
+		set slot 23 of {_Menu.GUI.Bliss} to prismarine shard named "&e&lBliss Season 2 World" with lore "<##FFDBDB>teleports to the bliss" and "&bs2 world" with custom model data 12
+		set slot 24 of {_Menu.GUI.Bliss} to air
+		set slot 25 of {_Menu.GUI.Bliss} to air
+		set slot 28 of {_Menu.GUI.Bliss} to spruce sapling named "<##A4FF4A>&lRandom &fTP" with lore "&7fresh places for shots"
+		set slot 30 of {_Menu.GUI.Bliss} to nautilus shell named "<##96FFD9>&lᴇɴᴇʀɢʏ" with lore "<##FFDBDB>set menu | energy bottle" with custom model data 300
+		open {_Menu.GUI.Bliss} for player
 
-        set slot 10 of player's current inventory to an allay spawn egg named "<##23E1FF>&lCreative &7Mode" with lore "&7sets you in creative"
-        set slot 16 of player's current inventory to a slime spawn egg named "<##61B762>&lSurvival &7Mode" with lore "&7sets you in survival"
-        set slot 21 of player's current inventory to a prismarine shard named "<##FFD773>&lGems" with lore "&7quickly get gems" with custom model data 4
-        set slot 23 of player's current inventory to a netherite sword named "<##F63758>&lKits"
-        delete lore of slot 23 of player's current inventory
-        set slot 28 of player's current inventory to a spruce sapling named "<##ACFF82>&lRandom &fTP" with lore "&7fresh places for shots"
-        set slot 34 of player's current inventory to a totem of undying named "<##8EFFCB>&lTrust &7List"
-        set slot 49 of player's current inventory to a flower banner pattern named "&cClose&f❌" with lore "&7close the menu"
+on load:
+	set {-Gems.GUI.Item} to prismarine shard named "<##FFD773>&lGems" with lore "&7quicky get gems" with hidden enchants flag with custom model data 4
+	enchant {-Gems.GUI.Item} with mending 1
+	set {-Clear.Inventory.Item} to structure void named "<##FF2B4F>&lClear Inventory"
+	set {-Progress.One.Item} to wooden sword named "<##E4A1FF>&lProgress One"
+	set {-Progress.Two.Item} to stone sword named "<##E4A1FF>&lProgress Two"
+	set {-Progress.Three.Item} to iron sword named "<##E4A1FF>&lProgress Three"
+	set {-Progress.Four.Item} to diamond sword named "<##E4A1FF>&lProgress Four"
+	set {Standard.Kit.Item} to prismarine shard named "<##5781FF>&lStandard Kit" with custom model data 4
+	set {More.Item} to emerald block named "<##54FF7C>&lMore"
+	set {Back.Item} to oak door named "<##FF2929>back"
+	set {Pristine+5.Energy.Item} to prismarine shard with hidden enchants flag with custom model data 6
+	enchant {Pristine+5.Energy.Item} with mending 1
+	set {Pristine+4.Energy.Item} to nautilus shell named "<##57FFC7>Pristine &f+ <##57FFC7>4" with custom model data 300
+	set {Pristine+3.Energy.Item} to nautilus shell named "<##57FFC7>Pristine &f+ <##57FFC7>3" with custom model data 300
+	set {Pristine+2.Energy.Item} to nautilus shell named "<##57FFC7>Pristine &f+ <##57FFC7>2" with custom model data 300
+	set {Pristine+1.Energy.Item} to nautilus shell named "<##57FFC7>Pristine &f+ <##57FFC7>1" with custom model data 300
+	set {Pristine.Energy.Item} to prismarine shard named "<##57FFC7>Pristine" with hidden enchants flag with custom model data 6
+	set {Scratched.Energy.Item} to prismarine shard named "<##57FF8F>Scratched" with hidden enchants flag with custom model data 26
+	set {Cracked.Energy.Item} to prismarine shard named "<##7958DB>Cracked" with hidden enchants flag with custom model data 46
+	set {Damaged.Energy.Item} to prismarine shard named "<##FFC929>Damaged" with hidden enchants flag with custom model data 66
+	set {Ruined.Energy.Item} to prismarine shard named "<##FF1111>Ruined" with hidden enchants flag with custom model data 86
+	set {Broken.Energy.Item} to prismarine shard named "<##C9C9C9>Broken" with hidden enchants flag with custom model data 96
+	set {Random.Gem.Item} to prismarine shard named "<##C9FFF3>&lRandom Gem" with lore "<##FFDBDB> T2 | T1"
+	set {Gem.GUI.Life.Item} to prismarine shard named "<##FE04B4>&lLife &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 4
+	set {Gem.GUI.Strength.Item} to prismarine shard named "<##F10303>Strength &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 10
+	set {Gem.GUI.Fire.Item} to prismarine shard named "<##FE8120>&lFire &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 2
+	set {Gem.GUI.Speed.Item} to prismarine shard named "<##FEFD17>&lSpeed &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 8
+	set {Gem.GUI.Wealth.Item} to prismarine shard named "<##0EC912>&lWealth &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 12
+	set {Gem.GUI.Astra.Item} to prismarine shard named "<##A01FFF>&lAstra &r<##C7C7C7>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 14
+	set {Gem.GUI.Puff.Item} to prismarine shard named "<##EFEFEF>&lPuff &r<##FFD773>Gem" with lore "<##FFDBDB> T2 | T1" with custom model data 6
+	set {Gem.GUI.Gold.Item} to prismarine shard named "<##FFC963>&lGold Gem" with lore "<##FFDBDB>Harness the power", "<##FFDBDB>of all gems" and " <##FFC963>Wired Form | Grant slots" with custom model data 707
+	set {Gem.GUI.Repair.Item} to nautilus shell named "<##8CF5A9>&lRepair" with custom model data 200
+	set {Gem.GUI.Upgrader.Item} to player head named "<##ACFF82>&lUpgrader" with nbt compound from "{SkullOwner:{Id:[I;660124231,2128364985,-1717330005,146378663],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDk5MmU0YThmNDNjNzdhYzJlMmQ3OTJkOTYwNGY2MWYzNDM4N2M4NzdhYmEzNzEyZTQwNDdiNzQwYzU3OCJ9fX0=""}]}}}"
+	set {Gem.GUI.Energy.Bottle.Item} to nautilus shell named "<##96FFD9>&lEnergy" with lore "<##FFDBDB>set menu | energy bottle" with custom model data 300
+	set {Gem.GUI.Trader.Item} to player head named "<##E9C2FF>&lTrader" with nbt compound from "{SkullOwner:{Id:[I;-1135994195,374558533,-1713180762,2053437446],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY2MjRhNDRlNzdiOTVkYmUxY2M3MzU1MzY5NTNlODQwYmE2YzE5YjAxNTdjNTQ5ZDliODI1MzQ2NDhjOGNlNCJ9fX0=""}]}}}"
+	set {Gem.GUI.Revive.Item} to nautilus shell named "<##F878FF>&lRevival" with custom model data 210
+	set {Bliss.Kit.Item} to iron sword named "&6&lBliss &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {ItsRyanStuff.Kit.Item} to iron sword named "&6&lItsRyanStuff &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Domonoko.Kit.Item} to iron sword named "&6&lDomonoko &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Dom.Kit.Item} to iron sword named "&6&lDom &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {E.Kit.Item} to purple dye named "&6&lE &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Wailable.Kit.Item} to iron sword named "&6&lWailable &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {OP.Kit.Item} to iron sword named "&6&lOP &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {WhoAmI'sinv.Item} to iron sword named "&6&lWhoAmI'sinv &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {WhoAmI'sarmour.Item} to iron sword named "&6&lWhoAmI'sarmour &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {MugmInv.Item} to a iron sword named "&6&lMugmInv &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {ArchDamage.Kit.Item} to a iron sword named "&6&lArchDamage &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {ArchINV.Kit.Item} to a iron sword named "&6&lArchINV &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Rylanets.Kit.Item} to a iron sword named "&6&lRylanets &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Quak.Item} to a bubble coral block named "&5&lQuak" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Togez'sarmor.Item} to a diamond chestplate named "&3&lTogez's armor" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Togez'sitems.Item} to a diamond sword named "&3&lTogez's items" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {WyLLInventory.Item} to a iron sword named "&6&lWyLLInventory &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Mugm2.Kit.Item} to a iron sword named "&6&lMugm2 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {MugmReplica.Kit.Item} to a iron sword named "&6&lMugmReplica &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {MugmReplicaG.Kit.Item} to a iron sword named "&6&lMugmReplicaG &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {9waugjmwah.Kit.Item} to a iron sword named "&6&l9waugjmwah &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Experimentals3.Kit.Item} to a iron sword named "&6&lexperimentals3 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Experimentals3Netherite.Kit.Item} to a iron sword named "&6&lexperimentals3neth &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Wailables.Kit.Item} to a iron sword named "&6&lWailables &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {WyLL_Finale.Kit.Item} to a iron sword named "&6&lWyLL_Finale &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {DabbyCatFIRE.Kit.Item} to a iron sword named "&6&lDabbycatFIRE &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {DabbyCatFIREReal.Kit.Item} to a iron sword named "&6&lDabbycatFIREreal &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Silvasaur.Kit.Item} to a iron sword named "&6&lsilvasaur &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {EarlyGame^-^.Kit.Item} to a iron sword named "&6&learlygame^-^ &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-Progression2.Kit.Item} to a iron sword named "&6&lprogression2 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-Progression2Good.Kit.Item} to a iron sword named "&6&lprogression2good &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-Progression3.Kit.Item} to a iron sword named "&6&lprogression3 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-ProgressionTwoBetter.Kit.Item} to a iron sword named "&6&lprogressiontwobetter &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-ProgressionThreeNOGEM.Kit.Item} to a iron sword named "&6&lprogressionthreeNOGEM &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-Progression4.Kit.Item} to a iron sword named "&6&lProgression4 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Prog4.Kit.Item} to a iron sword named "&6&lprog4 &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {Prog2Rylanets.Kit.Item} to a iron sword named "&6&lprog2rylanests &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {-Progressioniv.Kit.Item} to a iron sword named "&6&lprogressioniv &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+	set {UHC.Kit.Item} to a iron sword named "&6&luhc &aKit" with lore "&7This is a description of the kit." and "&7You can add multiples &alines&7." with nbt compound from "{HideFlags:63}"
+
+on inventory click: 
+	if name of event-inventory is "<##FFD773>&lMenu":
+		if index of event-slot is between 0 and 44:
+			cancel event
+			if event-item is {Creative.Mode.Item}:
+				set player's gamemode to creative
+			else if event-item is {Survival.Mode.Item}:
+				set player's gamemode to survival
+			else if event-item is {-Gems.GUI.Item}:
+				set {_Menu.GUI.Bliss.Gems} to a new chest inventory with 6 row with name "<##FFE4AB>&lGems"
+				set {_times} to 0
+				loop 54 times:
+					set slot {_times} of {_Menu.GUI.Bliss.Gems} to gray stained glass pane named "."
+					add 1 to {_times}
+				set slot 13 of {_Menu.GUI.Bliss.Gems} to {Random.Gem.Item}
+				set slot 19 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Life.Item}
+				set slot 20 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Strength.Item}
+				set slot 21 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Fire.Item}
+				set slot 22 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Speed.Item}
+				set slot 23 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Wealth.Item}
+				set slot 24 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Astra.Item}
+				set slot 25 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Puff.Item}
+				set slot 31 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Gold.Item}
+				set slot 37 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Repair.Item}
+				set slot 38 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Upgrader.Item}
+				set slot 40 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Energy.Bottle.Item}
+				set slot 42 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Trader.Item}
+				set slot 43 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Revive.Item}
+				set slot 45 of {_Menu.GUI.Bliss.Gems} to barrier named "&d&oClear Gems"
+				set slot 53 of {_Menu.GUI.Bliss.Gems} to oak door named "<##FF2929>back"
+
+				open {_Menu.GUI.Bliss.Gems} for player
+			else if event-item is {Random.TP.Item}:
+				if plugin "BetterRTP" is enabled:
+					execute player command "rtp"
+				else:
+					send "&7[&d&lBliss&7] &cThis server needs to have the BetterRTP plugin for this to work!" to player
+
+			else if event-item is a netherite sword named "<##FF3B3B>&lKits":
+				set {_Menu.Pre.Kits.GUI} to a new chest inventory with 3 row with name "&b&lKits"
+				set slot 1 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 0 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 2 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 3 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 4 of {_Menu.Pre.Kits.GUI} to {-Clear.Inventory.Item}
+				set slot 5 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 6 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 7 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 8 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 9 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 10 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 11 of {_Menu.Pre.Kits.GUI} to {-Progress.One.Item}
+				set slot 12 of {_Menu.Pre.Kits.GUI} to {-Progress.Two.Item}
+				set slot 13 of {_Menu.Pre.Kits.GUI} to {-Progress.Three.Item}
+				set slot 14 of {_Menu.Pre.Kits.GUI} to {-Progress.Four.Item}
+				set slot 15 of {_Menu.Pre.Kits.GUI} to {Standard.Kit.Item}
+				set slot 16 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 17 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 18 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 19 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 20 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 21 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 22 of {_Menu.Pre.Kits.GUI} to {More.Item}
+				set slot 23 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 24 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 25 of {_Menu.Pre.Kits.GUI} to gray stained glass pane named "."
+				set slot 26 of {_Menu.Pre.Kits.GUI} to {Back.Item}
+
+				open {_Menu.Pre.Kits.GUI} for player
+			if event-item is {Energy.Bottle.Item}:
+				if "%click type%" contains "LEFT":
+					set {_Menu.Energy.GUI} to a new chest inventory with 3 row with name "<##96FFD9>&lᴇɴᴇʀɢʏ"
+					set slot 0 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 1 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 2 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 3 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 4 of {_Menu.Energy.GUI} to {Pristine+5.Energy.Item}
+					set slot 5 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 6 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 7 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 8 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 9 of {_Menu.Energy.GUI} to {Ruined.Energy.Item}
+					set slot 10 of {_Menu.Energy.GUI} to {Damaged.Energy.Item}
+					set slot 11 of {_Menu.Energy.GUI} to {Cracked.Energy.Item}
+					set slot 12 of {_Menu.Energy.GUI} to {Scratched.Energy.Item}
+					set slot 13 of {_Menu.Energy.GUI} to {Pristine.Energy.Item}
+					set slot 14 of {_Menu.Energy.GUI} to {Pristine+1.Energy.Item}
+					set slot 15 of {_Menu.Energy.GUI} to 2 of {Pristine+2.Energy.Item}
+					set slot 16 of {_Menu.Energy.GUI} to 3 of {Pristine+3.Energy.Item}
+					set slot 17 of {_Menu.Energy.GUI} to 4 of {Pristine+4.Energy.Item}
+					set slot 18 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 19 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 20 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 21 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 22 of {_Menu.Energy.GUI} to {Broken.Energy.Item}
+					set slot 23 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 24 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 25 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 26 of {_Menu.Energy.GUI} to {Back.Item}
+
+					open {_Menu.Energy.GUI} for player
+				if "%click type%" contains "RIGHT":
+					give player nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##96FFD9>&lFrom: <##FFE4AB>None"
 
 on inventory click:
-    if event-item is prismarine shard named "<##FFD773>&lGems":
-        set {_Menu.GUI.Bliss.Gems} to a new chest inventory with 6 row with name "<##FFD773>&lGems"
-        open {_Menu.GUI.Bliss.Gems} for player
-        set {_times} to 0
-        loop 54 times:
-            set slot {_times} of player's current inventory to dark gray stained glass pane named "&7."
-            add 1 to {_times} 
-
-        set slot 9 of player's current inventory to a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ2"
-
-        set slot 10 of player's current inventory to a prismarine shard with custom model data 2 named "<##FE8120>&lFire &r<##FFD773>Gem"
-        set slot 11 of player's current inventory to a prismarine shard with custom model data 4 named "<##FE04B4>&lLife &r<##FFD773>Gem"
-        set slot 12 of player's current inventory to a prismarine shard with custom model data 8 named "<##FEFD17>&lSpeed &r<##FFD773>Gem"
-        set slot 13 of player's current inventory to a prismarine shard with custom model data 10 named "<##F10303>Strength &r<##FFD773>Gem"
-        set slot 14 of player's current inventory to a prismarine shard with custom model data 12 named "<##0EC912>&lWealth &r<##FFD773>Gem"
-        set slot 15 of player's current inventory to a prismarine shard with custom model data 6 named "<##EFEFEF>&lPuff &r<##FFD773>Gem"
-        set slot 16 of player's current inventory to a prismarine shard with custom model data 17 named "<##A01FFF>&lAstra &r<##C7C7C7>Gem"
-
-        set slot 17 of player's current inventory to a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ2"
-
-
-
-        set slot 27 of player's current inventory to a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ1"
-
-        set slot 28 of player's current inventory to a amethyst shard with custom model data 1 named "<##FE8120>&lFire &r<##C7C7C7>Gem"
-        set slot 29 of player's current inventory to a amethyst shard with custom model data 3 named "<##FE04B4>&lLife &r<##C7C7C7>Gem"
-        set slot 30 of player's current inventory to a amethyst shard with custom model data 7 named "<##FEFD17>&lSpeed &r<##C7C7C7>Gem"
-        set slot 31 of player's current inventory to a amethyst shard with custom model data 9 named "<##F10303>&lStrength &r<##C7C7C7>Gem"
-        set slot 32 of player's current inventory to a amethyst shard with custom model data 11 named "<##0EC912>&lWealth &r<##C7C7C7>Gem"
-        set slot 33 of player's current inventory to a amethyst shard with custom model data 5 named "<##EFEFEF>&lPuff &r<##C7C7C7>Gem"
-        set slot 34 of player's current inventory to a amethyst shard with custom model data 16 named "<##A01FFF>&lAstra &r<##C7C7C7>Gem"
-
-        set slot 35 of player's current inventory to a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ1"
-
-
-        set slot 37 of player's current inventory to a nautilus Shell with custom model data 200 named "<##8CF5A9>&lRepair"
-        set slot 38 of player's current inventory to a player head named "<##ACFF82><bold>Upgrader" with nbt compound from "{SkullOwner:{Id:[I;660124231,2128364985,-1717330005,146378663],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDk5MmU0YThmNDNjNzdhYzJlMmQ3OTJkOTYwNGY2MWYzNDM4N2M4NzdhYmEzNzEyZTQwNDdiNzQwYzU3OCJ9fX0=""}]}}}"
-        set slot 40 of player's current inventory to a nautilus shell with custom model data 300 named "<##96FFD9>ʜᴇᴀʟ&f/<##FFE4AB>sʜɪɴʏ&f/<##96FFD9>ᴇɴᴇʀɢʏ"
-        set slot 42 of player's current inventory to a player head named "<##E9C2FF><bold>Trader" with nbt compound from "{SkullOwner:{Id:[I;-1135994195,374558533,-1713180762,2053437446],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY2MjRhNDRlNzdiOTVkYmUxY2M3MzU1MzY5NTNlODQwYmE2YzE5YjAxNTdjNTQ5ZDliODI1MzQ2NDhjOGNlNCJ9fX0=""}]}}}"
-        set slot 43 of player's current inventory to a nautilus Shell with custom model data 210 named "<##F878FF>&lRevival"
-
-
-        set slot 49 of player's current inventory to a flower banner pattern named "&c&lBack↩" with lore "&7return to main menu"
-        
+	if name of event-inventory is "<##96FFD9>&lᴇɴᴇʀɢʏ":
+		if index of event-slot is between 0 and 26:
+			cancel event
+			if event-item is {Pristine+5.Energy.Item}:
+				execute player command "bliss setenergy %player% 10"
+			else if event-item is 4 of {Pristine+4.Energy.Item}:
+				execute player command "bliss setenergy %player% 9"
+			else if event-item is 3 of {Pristine+3.Energy.Item}:
+				execute player command "bliss setenergy %player% 8"
+			else if event-item is 2 of {Pristine+2.Energy.Item}:
+				execute player command "bliss setenergy %player% 7"
+			else if event-item is {Pristine+1.Energy.Item}:
+				execute player command "bliss setenergy %player% 6"
+			else if event-item is {Pristine.Energy.Item}:
+				execute player command "bliss setenergy %player% 5"
+			else if event-item is {Scratched.Energy.Item}:
+				execute player command "bliss setenergy %player% 4"
+			else if event-item is {Cracked.Energy.Item}:
+				execute player command "bliss setenergy %player% 3"
+			else if event-item is {Damaged.Energy.Item}:
+				execute player command "bliss setenergy %player% 2"
+			else if event-item is {Ruined.Energy.Item}:
+				execute player command "bliss setenergy %player% 1"
+			else if event-item is {Broken.Energy.Item}:
+				execute player command "bliss setenergy %player% 0"
+			else if event-item is {Back.Item}:
+				execute player command "/menu"
 
 on inventory click:
+	if name of event-inventory is "&b&lKits":
+		if index of event-slot is between 0 and 26:
+			cancel event
+			if event-item is {-Clear.Inventory.Item}:
+				execute player command "clear %player%"
+			else if event-item is {-Progress.One.Item}:
+				give player wooden sword
+				give player wooden axe
+				give player wooden pickaxe
+				give player wooden shovel
+				give player wooden hoe
+				give player leather cap
+				give player leather chestplate
+				give player leather leggings
+				give player leather boots
+			else if event-item is {-Progress.Two.Item}:
+				give player stone sword
+				give player stone axe
+				give player stone pickaxe
+				give player stone shovel
+				give player stone hoe
+				give player chainmail helmet
+				give player chainmail chestplate
+				give player chainmail leggings
+				give player chainmail boots
+			else if event-item is {-Progress.Three.Item}:
+				give player iron sword
+				give player iron axe
+				give player iron pickaxe
+				give player iron shovel
+				give player iron hoe
+				give player iron helmet
+				give player iron chestplate
+				give player iron leggings
+				give player iron boots
+			else if event-item is {-Progress.Four.Item}:
+				give player diamond sword
+				give player diamond axe
+				give player diamond pickaxe
+				give player diamond shovel
+				give player diamond hoe
+				give player diamond helmet
+				give player diamond chestplate
+				give player diamond leggings
+				give player diamond boots
+			else if event-item is {Standard.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player 64 golden apple
+				give player 1 totem of undying
+				give player 16 ender pearl
+				give player 64 cobweb
+				give player 64 golden carrot
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player 1 water bucket
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player 1 arrow
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player air
+				give player air
+				give player air
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 64 cobweb
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {More.Item}:
+				execute player command "/kits"
 
-    if event-item is an allay spawn egg named "<##23E1FF>&lCreative &7Mode":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            set player's gamemode to creative
+command /kit:
+	permission: BlissSkriptV3.Kits
+	trigger:
+		execute player command "kits"
 
+command /kits:
+	permission: BlissSkriptV3.Kits
+	trigger:
+		set {_Menu.GUI.Kits} to a new chest inventory with 5 row with name "&9Kits"
+		set slot 0 of {_Menu.GUI.Kits} to black stained glass pane named "&7"
+		set slot 1 of {_Menu.GUI.Kits} to {Bliss.Kit.Item}
+		set slot 2 of {_Menu.GUI.Kits} to {ItsRyanStuff.Kit.Item}
+		set slot 3 of {_Menu.GUI.Kits} to {Domonoko.Kit.Item}
+		set slot 4 of {_Menu.GUI.Kits} to {Dom.Kit.Item}
+		set slot 5 of {_Menu.GUI.Kits} to {E.Kit.Item}
+		set slot 6 of {_Menu.GUI.Kits} to {Wailable.Kit.Item}
+		set slot 7 of {_Menu.GUI.Kits} to {OP.Kit.Item}
+		set slot 8 of {_Menu.GUI.Kits} to black stained glass pane named "&7"
+		set slot 9 of {_Menu.GUI.Kits} to {WhoAmI'sinv.Item}
+		set slot 10 of {_Menu.GUI.Kits} to {WhoAmI'sarmour.Item}
+		set slot 11 of {_Menu.GUI.Kits} to {MugmInv.Item}
+		set slot 12 of {_Menu.GUI.Kits} to {ArchDamage.Kit.Item}
+		set slot 13 of {_Menu.GUI.Kits} to {ArchINV.Kit.Item}
+		set slot 14 of {_Menu.GUI.Kits} to {Rylanets.Kit.Item}
+		set slot 15 of {_Menu.GUI.Kits} to {Quak.Item}
+		set slot 16 of {_Menu.GUI.Kits} to {Togez'sarmor.Item}
+		set slot 17 of {_Menu.GUI.Kits} to {Togez'sitems.Item}
+		set slot 18 of {_Menu.GUI.Kits} to air
+		set slot 19 of {_Menu.GUI.Kits} to {WyLLInventory.Item}
+		set slot 20 of {_Menu.GUI.Kits} to {Mugm2.Kit.Item}
+		set slot 21 of {_Menu.GUI.Kits} to {MugmReplica.Kit.Item}
+		set slot 22 of {_Menu.GUI.Kits} to {MugmReplicaG.Kit.Item}
+		set slot 23 of {_Menu.GUI.Kits} to {9waugjmwah.Kit.Item}
+		set slot 24 of {_Menu.GUI.Kits} to {Experimentals3.Kit.Item}
+		set slot 25 of {_Menu.GUI.Kits} to {Experimentals3Netherite.Kit.Item}
+		set slot 26 of {_Menu.GUI.Kits} to air
+		set slot 27 of {_Menu.GUI.Kits} to {Wailables.Kit.Item}
+		set slot 28 of {_Menu.GUI.Kits} to {WyLL_Finale.Kit.Item}
+		set slot 29 of {_Menu.GUI.Kits} to {DabbyCatFIRE.Kit.Item}
+		set slot 30 of {_Menu.GUI.Kits} to {DabbyCatFIREReal.Kit.Item}
+		set slot 31 of {_Menu.GUI.Kits} to {Silvasaur.Kit.Item}
+		set slot 32 of {_Menu.GUI.Kits} to {EarlyGame^-^.Kit.Item}
+		set slot 33 of {_Menu.GUI.Kits} to {-Progression2.Kit.Item}
+		set slot 34 of {_Menu.GUI.Kits} to {-Progression2Good.Kit.Item}
+		set slot 35 of {_Menu.GUI.Kits} to {-Progression3.Kit.Item}
+		set slot 36 of {_Menu.GUI.Kits} to black stained glass pane named "&7"
+		set slot 37 of {_Menu.GUI.Kits} to {-ProgressionTwoBetter.Kit.Item}
+		set slot 38 of {_Menu.GUI.Kits} to {-ProgressionThreeNOGEM.Kit.Item}
+		set slot 39 of {_Menu.GUI.Kits} to {-Progression4.Kit.Item}
+		set slot 40 of {_Menu.GUI.Kits} to {Prog4.Kit.Item}
+		set slot 41 of {_Menu.GUI.Kits} to {Prog2Rylanets.Kit.Item}
+		set slot 42 of {_Menu.GUI.Kits} to {-Progressioniv.Kit.Item}
+		set slot 43 of {_Menu.GUI.Kits} to {UHC.Kit.Item}
+		set slot 44 of {_Menu.GUI.Kits} to black stained glass pane named "&7"
 
-    if event-item is a slime spawn egg named "<##61B762>&lSurvival &7Mode":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            set player's gamemode to survival
+		open {_Menu.GUI.Kits} for player
 
-
-    if event-item is a totem of undying named "<##8EFFCB>&lTrust &7List":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            set {_s} to 0
-            set {_uuid} to uuid of player
-            set {_Bliss.Trusted.GUI} to a new chest inventory with 3 row with name "<##FFE4AB>ᴛʀᴜsᴛᴇᴅ ᴘʟᴀʏᴇʀs"
-            loop {Bliss.Trusted.%{_uuid}%::*}:
-
-                set {_p} to loop-value parsed as offline player
-                set slot {_s} of {_Bliss.Trusted.GUI} to {_p}'s skull named "&e%{_p}%" with lore "&cClick to remove"
-                add 1 to {_s}
-
-            open {_Bliss.Trusted.GUI} to player
-
-
-
-
-    if event-item is a spruce sapling named "<##ACFF82>&lRandom &fTP":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            send "&cNever Coming... or maybe??"
-
-
-    if event-item is a netherite sword named "<##F63758>&lKits":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            send "&cWill not come till bliss hub is back online"
-            
-
-
+function givekititembetter(i: item, n: number, p: player):
+	loop {_n} times:
+		if {_p} has enough space for 1 of {_i}:
+			give {_p} 1 of {_i}
+		else:
+			drop 1 of {_i} at {_p}'s location
 
 
 
 
 on inventory click:  
-    if event-item is a nautilus shell with custom model data 200 named "<##8CF5A9>&lRepair":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            give player {Repair}
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Repair}'s name%" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Repair}'s name%" to player
+	if name of event-inventory is "&9Kits":
+		if index of event-slot is between 0 and 44:
+			cancel event
+			if event-item is {Bliss.Kit.Item}:
+				set {_item} to diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking
+				givekititembetter({_item}, 1, player)
 
 
-    if event-item is a player head named "<##ACFF82><bold>Upgrader":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            give player {Upgrader}
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Upgrader}'s name%" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Upgrader}'s name%" to player
+				set {_item} to netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				givekititembetter({_item}, 1, player)
 
+				set {_item} to golden apple
+				givekititembetter({_item}, 64, player)
 
-    if event-item is a nautilus shell with custom model data 300 named "<##96FFD9>ʜᴇᴀʟ&f/<##FFE4AB>sʜɪɴʏ&f/<##96FFD9>ᴇɴᴇʀɢʏ":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            give player nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ"
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% <##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" to player
+				set {_item} to totem of undying
+				givekititembetter({_item}, 1, player)
 
+				set {_item} to ender pearl
+				givekititembetter({_item}, 16, player)
 
-    if event-item is a player head named "<##E9C2FF><bold>Trader":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            give player {Trader}
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Trader}'s name%" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Trader}'s name%" to player
-            
-
-
-    if event-item is a nautilus Shell with custom model data 210 named "<##F878FF>&lRevival":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            give player {Revive}
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Revive}'s name%" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Revive}'s name%" to player
+				set {_item} to cobweb
+				givekititembetter({_item}, 64, player)
 
 
 
+				set {_item} to golden carrot 
+				givekititembetter({_item}, 64, player)
 
+
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player 1 water bucket
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player 1 arrow
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player air
+				give player air
+				give player air
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 64 cobweb
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {ItsRyanStuff.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3 named "Serendipity"
+				give player 64 cobblestone
+				give player netherite axe of efficiency 5, fortune 3, mending, sharpness 5 and unbreaking 3 named "Clover"
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player 64 golden apple
+				give player 64 golden carrot
+				give player 64 cobweb
+				give player 1 totem of undying
+				give player 16 ender pearl
+				give player long fire resistance splash potion
+				give player long speed splash potion
+				give player long strength splash potion
+				give player 16 ender pearl
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 64 arrow
+				give player 1 ender chest
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player water bucket
+				give player {Gems.Astra.Pristine.Tier.2}
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {Domonoko.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player 64 cobweb
+				give player 1 water bucket
+				give player 64 golden apple
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player fire resistance splash potion
+				give player 1 totem of undying
+				give player 16 ender pearl
+				give player fire resistance splash potion
+				give player speed splash potion
+				give player strength splash potion
+				give player fire resistance splash potion
+				give player 64 cobweb
+				give player speed splash potion
+				give player strength splash potion
+				give player fire resistance splash potion
+				give player speed splash potion
+				give player strength splash potion
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 64 golden carrot
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player arrow
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player 64 cobweb
+				give player 64 golden apple
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {Dom.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player 64 cobweb
+				give player 1 water bucket
+				give player 64 golden apple
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player fire resistance splash potion
+				give player 1 totem of undying
+				give player 16 ender pearl
+				give player fire resistance splash potion
+				give player speed splash potion
+				give player strength splash potion
+				give player fire resistance splash potion
+				give player 64 cobweb
+				give player speed splash potion
+				give player strength splash potion
+				give player fire resistance splash potion
+				give player speed splash potion
+				give player strength splash potion
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player 64 golden carrot
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player arrow
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player 64 cobweb
+				give player 64 golden apple
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {Wailable.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player 64 golden carrot 
+				give player 64 golden apple 
+				give player 1 totem of undying
+				give player water bucket
+				give player 16 ender pearl
+				give player 64 cobweb
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 16 ender pearl
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player arrow
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 64 cobweb
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {OP.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player diamond axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player 5 golden apple
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {WhoAmI'sinv.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player 64 cobweb
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player splash potion of healing
+				give player fire resistance splash potion
+				give player strength splash potion
+				give player water bucket
+				give player 64 golden apple 
+				give player 16 ender pearl
+				give player 64 bottle o' enchanting
+				give player strength splash potion
+				give player speed splash potion
+				give player fire resistance splash potion
+				give player arrow 
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player 64 bottle o' enchanting
+				give player strength splash potion
+				give player speed splash potion
+				give player fire resistance splash potion
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player splash potion of healing
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {WhoAmI'sarmour.Item}:
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {MugmInv.Item}:
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player 64 golden apple
+				give player water bucket
+				give player totem of undying
+				give player 64 cobweb
+				give player 16 ender pearl
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player 64 golden apple
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player 64 golden apple
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player 16 ender pearl
+				give player arrow
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			else if event-item is {ArchINV.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player 64 cobweb
+				give player 16 ender pearl
+				give player 64 golden apple
+				give player totem of undying
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player bow of flame, infinity, power 5, punch 2 and unbreaking 1
+				give player water bucket
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player 2 ender chest
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player 64 cobweb
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player 16 ender pearl
+				give player 64 arrow 
+				give player 64 bottle o' enchanting
+				give player speed splash potion
+				give player speed splash potion
+				give player 32 cobweb
+				give player speed splash potion
+				give player 32 golden apple
+				give player 16 ender pearl
+				give player 13 golden carrot
+				give player 63 bottle o' enchanting
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			if event-item is {Rylanets.Kit.Item}:
+				give player diamond sword of fire aspect 2, looting 3, mending, sharpness 5, sweeping edge 3 and unbreaking 3
+				give player netherite axe of efficiency 5, mending, sharpness 5, silk touch and unbreaking 3
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player 16 ender pearl
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player speed splash potion
+				give player 64 bottle o' enchanting
+				give player 64 bottle o' enchanting
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player 16 ender pearl
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player strength splash potion
+				give player arrow
+				give player shield of unbreaking 3 and mending
+				give player netherite pickaxe of efficiency 5, mending and unbreaking 3
+				give player 16 ender pearl
+				give player 64 golden apple 
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				give player fire resistance splash potion
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+			if event-item is {Togez'sarmor.Item}:
+				give player diamond helmet of aqua affinity, mending, protection 4, respiration 3 and unbreaking 3
+				give player diamond chestplate of mending, protection 4 and unbreaking 3
+				give player diamond leggings of mending, protection 4, swift sneak 3 and unbreaking 3
+				give player diamond boots of depth strider 3, feather falling 4, mending, protection 4, soul speed 3 and unbreaking 3
+				send "&8[&4PlayerKits&8] &aKit &7Bliss &areceived." to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
+				play sound "entity.player.levelup" with pitch 2 to player
 
 on inventory click:
-    if event-item is a dark gray stained glass pane named "&7.":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
+	if event-item is prismarine shard named "<##FFD773>&lGems":
+		execute player command "gem"
 
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
+command /gem:
+	permission: BlissSkriptV3./gem
+	trigger:
+		set {_Menu.GUI.Bliss.Gems} to a new chest inventory with 6 row with name "<##FFE4AB>&lGems"
+		set {_times} to 0
+		loop 54 times:
+			set slot {_times} of {_Menu.GUI.Bliss.Gems} to gray stained glass pane named "."
+			add 1 to {_times}
+		set slot 13 of {_Menu.GUI.Bliss.Gems} to {Random.Gem.Item}
+		set slot 19 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Life.Item}
+		set slot 20 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Strength.Item}
+		set slot 21 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Fire.Item}
+		set slot 22 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Speed.Item}
+		set slot 23 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Wealth.Item}
+		set slot 24 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Astra.Item}
+		set slot 25 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Puff.Item}
+		set slot 31 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Gold.Item}
+		set slot 37 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Repair.Item}
+		set slot 38 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Upgrader.Item}
+		set slot 40 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Energy.Bottle.Item}
+		set slot 42 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Trader.Item}
+		set slot 43 of {_Menu.GUI.Bliss.Gems} to {Gem.GUI.Revive.Item}
+		set slot 45 of {_Menu.GUI.Bliss.Gems} to barrier named "&d&oClear Gems"
+		set slot 53 of {_Menu.GUI.Bliss.Gems} to oak door named "<##FF2929>back"
 
-    
-
-    if event-item is a flower banner pattern named "&c&lBack↩":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            close player's inventory
-            set {_Menu.GUI.Bliss} to a new chest inventory with 6 row with name "<##FFD773>&lMenu"
-            open {_Menu.GUI.Bliss} for player
-            set {_times} to 0
-            loop 54 times:
-                set slot {_times} of player's current inventory to dark gray stained glass pane named "&7."
-                add 1 to {_times} 
-    
-            set slot 10 of player's current inventory to an allay spawn egg named "<##23E1FF>&lCreative &7Mode" with lore "&7sets you in creative"
-            set slot 16 of player's current inventory to a slime spawn egg named "<##61B762>&lSurvival &7Mode" with lore "&7sets you in survival"
-            set slot 21 of player's current inventory to a prismarine shard named "<##FFD773>&lGems" with lore "&7quickly get gems" with custom model data 4
-            set slot 23 of player's current inventory to a netherite sword named "<##F63758>&lKits"
-            delete lore of slot 23 of player's current inventory
-            set slot 28 of player's current inventory to a spruce sapling named "<##ACFF82>&lRandom &fTP" with lore "&7fresh places for shots"
-            set slot 34 of player's current inventory to a totem of undying named "<##8EFFCB>&lTrust &7List"
-            set slot 49 of player's current inventory to a flower banner pattern named "&cClose&f❌" with lore "&7close the menu"
-
-
-    if event-item is a flower banner pattern named "&cClose&f❌":
-        if name of event-inventory is "<##FFD773>&lMenu":
-            cancel event
-            close player's inventory
+		open {_Menu.GUI.Bliss.Gems} for player
 
 
 
 
-
-                
+on inventory click:  
+	if name of event-inventory is "<##FFE4AB>&lGems":
+		if index of event-slot is between 0 and 53:
+			cancel event
+			if event-item is barrier named "&d&oClear Gems":
+				if player has a prismarine shard:
+					execute player command "clear %player% prismarine_shard"
+				if player has a amethyst shard:
+					execute player command "clear %player% amethyst_shard"
+			if event-item is {Gem.GUI.Repair.Item}:
+				execute player command "/bliss item repair %player% 1"
+			else if event-item is {Gem.GUI.Upgrader.Item}:
+				execute player command "/bliss item upgrader %player% 1"
+			else if event-item is {Gem.GUI.Trader.Item}:
+				execute player command "/bliss item trader %player% 1"
+			else if event-item is {Gem.GUI.Revive.Item}:
+				execute player command "/bliss item revive %player% 1"
+			else if event-item is {Gem.GUI.Energy.Bottle.Item}:
+				if "%click type%" contains "LEFT":
+					set {_Menu.Energy.GUI} to a new chest inventory with 3 row with name "<##96FFD9>&lᴇɴᴇʀɢʏ"
+					set slot 0 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 1 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 2 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 3 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 4 of {_Menu.Energy.GUI} to {Pristine+5.Energy.Item}
+					set slot 5 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 6 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 7 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 8 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 9 of {_Menu.Energy.GUI} to {Ruined.Energy.Item}
+					set slot 10 of {_Menu.Energy.GUI} to {Damaged.Energy.Item}
+					set slot 11 of {_Menu.Energy.GUI} to {Cracked.Energy.Item}
+					set slot 12 of {_Menu.Energy.GUI} to {Scratched.Energy.Item}
+					set slot 13 of {_Menu.Energy.GUI} to {Pristine.Energy.Item}
+					set slot 14 of {_Menu.Energy.GUI} to {Pristine+1.Energy.Item}
+					set slot 15 of {_Menu.Energy.GUI} to 2 of {Pristine+2.Energy.Item}
+					set slot 16 of {_Menu.Energy.GUI} to 3 of {Pristine+3.Energy.Item}
+					set slot 17 of {_Menu.Energy.GUI} to 4 of {Pristine+4.Energy.Item}
+					set slot 18 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 19 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 20 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 21 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 22 of {_Menu.Energy.GUI} to {Broken.Energy.Item}
+					set slot 23 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 24 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 25 of {_Menu.Energy.GUI} to gray stained glass pane named "."
+					set slot 26 of {_Menu.Energy.GUI} to {Back.Item}
+					open {_Menu.Energy.GUI} for player
+				if "%click type%" contains "RIGHT":
+					give player nautilus shell with custom model data 300 named "<##96FFD9>&lᴇɴᴇʀɢʏ <##FFE4AB>ɪɴ ᴀ ʙᴏᴛᴛʟᴇ" with lore "<##96FFD9>&lFrom: <##FFE4AB>None"
+				else if event-item is {Gem.GUI.Strength.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% strength 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% strength 1"
+				else if event-item is {Gem.GUI.Speed.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% speed 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% speed 1"
+				else if event-item is {Gem.GUI.Fire.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% fire 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% fire 1"
+				else if event-item is {Gem.GUI.Life.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% life 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% life 1"
+				else if event-item is {Gem.GUI.Puff.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% puff 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% puff 1"
+				else if event-item is {Gem.GUI.Wealth.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% wealth 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% wealth 1"
+				else if event-item is {Gem.GUI.Astra.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% astra 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% astra 1"
+				else if event-item is {Random.Gem.Item}:
+					if name of event-inventory is "<##FFE4AB>&lGems":
+						cancel event
+						if "%click type%" contains "LEFT":
+							execute player command "bliss gem %player% random 2"
+						else if "%click type%" contains "RIGHT":
+							execute player command "bliss gem %player% random 1"
+				else if event-item is {Back.Item}:
+					execute player command "/menu"
 
 on inventory click:
-    if event-item is a prismarine shard named "<##F10303>Strength &r<##FFD773>Gem":
-
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Strength.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Strength.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Strength.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Strength.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Strength.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Strength.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Strength.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Strength.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Strength.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Strength.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Strength.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##F10303>&lStrength &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##F10303>&lsᴛʀᴇɴɢᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Strength.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Strength.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Strength.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Strength.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Strength.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Strength.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Strength.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Strength.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Strength.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Strength.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Strength.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-on inventory click:
-    if event-item is a prismarine shard named "<##FEFD17>&lSpeed &r<##FFD773>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Speed.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Speed.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Speed.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Speed.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Speed.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Speed.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Speed.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Speed.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Speed.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Speed.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Speed.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##FEFD17>&lSpeed &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FEFD17>&lsᴘᴇᴇᴅ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            cancel event
-            
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Speed.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Speed.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Speed.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Speed.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Speed.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Speed.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Speed.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Speed.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Speed.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Speed.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Speed.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-on inventory click:
-    if event-item is a prismarine shard named "<##FE8120>&lFire &r<##FFD773>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FE8120>&lғɪʀᴇ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FE8120>&lғɪʀᴇ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Fire.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Fire.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Fire.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Fire.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Fire.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Fire.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Fire.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Fire.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Fire.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Fire.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Fire.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##FE8120>&lFire &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FE8120>&lғɪʀᴇ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FE8120>&lғɪʀᴇ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            cancel event
-            
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Fire.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Fire.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Fire.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Fire.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Fire.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Fire.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Fire.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Fire.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Fire.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Fire.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Fire.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-on inventory click:
-    if event-item is a prismarine shard named "<##FE04B4>&lLife &r<##FFD773>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FE04B4>&lʟɪғᴇ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FE04B4>&lʟɪғᴇ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Life.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Life.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Life.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Life.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Life.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Life.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Life.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Life.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Life.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Life.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Life.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##FE04B4>&lLife &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##FE04B4>&lʟɪғᴇ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##FE04B4>&lʟɪғᴇ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            cancel event     
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Life.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Life.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Life.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Life.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Life.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Life.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Life.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Life.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Life.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Life.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Life.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-on inventory click:
-    if event-item is a prismarine shard named "<##EFEFEF>&lPuff &r<##FFD773>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Puff.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Puff.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Puff.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Puff.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Puff.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Puff.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Puff.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Puff.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Puff.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Puff.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Puff.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##EFEFEF>&lPuff &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##EFEFEF>&lᴘᴜғғ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            cancel event
-            
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Puff.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Puff.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Puff.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Puff.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Puff.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Puff.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Puff.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Puff.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Puff.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Puff.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Puff.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-on inventory click:
-    if event-item is a prismarine shard named "<##0EC912>&lWealth &r<##FFD773>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Wealth.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Wealth.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Wealth.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Wealth.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Wealth.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Wealth.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Wealth.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Wealth.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Wealth.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Wealth.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Wealth.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##0EC912>&lWealth &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##0EC912>&lᴡᴇᴀʟᴛʜ <##A4FEF1>gem &7Tier <##A4FEF1>1" to player
-            cancel event
-            
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Wealth.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Wealth.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Wealth.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Wealth.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Wealth.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Wealth.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Wealth.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Wealth.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Wealth.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Wealth.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Wealth.Broken.Tier.1}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-on inventory click:
-    if event-item is a prismarine shard named "<##A01FFF>&lAstra &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##FFE4AB>%player% <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received <##A01FFF>&lᴀsᴛʀᴀ <##A4FEF1>gem &7Tier <##A4FEF1>2" to player
-            cancel event
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Astra.Pristine+5.Tier.2}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Astra.Pristine+4.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Astra.Pristine+3.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Astra.Pristine+2.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Astra.Pristine+1.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Astra.Pristine.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Astra.Scratched.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Astra.Cracked.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Astra.Damaged.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Astra.Ruined.Tier.2}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Astra.Broken.Tier.2}
-
-    if event-item is a amethyst shard named "<##A01FFF>&lAstra &r<##C7C7C7>Gem":
-        if name of event-inventory is "<##FFD773>&lGems":
-            send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Astra.Pristine+5.Tier.1}'s name%" to player
-            send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Astra.Pristine+5.Tier.1}'s name%" to player
-            cancel event
-            
-            set {_uuid} to uuid of player
-            if {Bliss.GemHealth.%{_uuid}%} is 11:
-                give player {Gems.Astra.Pristine+5.Tier.1}
-            
-            if {Bliss.GemHealth.%{_uuid}%} is 10:
-                give player {Gems.Astra.Pristine+4.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 9:
-                give player {Gems.Astra.Pristine+3.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 8:
-                give player {Gems.Astra.Pristine+2.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 7:
-                give player {Gems.Astra.Pristine+1.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 6:
-                give player {Gems.Astra.Pristine.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 5:
-                give player {Gems.Astra.Scratched.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 4:
-                give player {Gems.Astra.Cracked.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 3:
-                give player {Gems.Astra.Damaged.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 2:
-                give player {Gems.Astra.Ruined.Tier.1}
-
-            if {Bliss.GemHealth.%{_uuid}%} is 1:
-                give player {Gems.Astra.Broken.Tier.1}
-
-
-
-
-
+	if event-item is {Gem.GUI.Strength.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% strength 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% strength 1"
+	if event-item is {Gem.GUI.Speed.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% speed 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% speed 1"
+	if event-item is {Gem.GUI.Fire.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% fire 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% fire 1"
+	if event-item is {Gem.GUI.Life.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% life 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% life 1"
+	if event-item is {Gem.GUI.Puff.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% puff 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% puff 1"
+	if event-item is {Gem.GUI.Wealth.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% wealth 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% wealth 1"
+	if event-item is {Gem.GUI.Astra.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% astra 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% astra 1"
+	if event-item is {Random.Gem.Item}:
+		if name of event-inventory is "<##FFE4AB>&lGems":
+			cancel event
+			if "%click type%" contains "LEFT":
+				execute player command "bliss gem %player% random 2"
+			else if "%click type%" contains "RIGHT":
+				execute player command "bliss gem %player% random 1"
 
 on right click:
-    if player's held item is a globe banner pattern named "&7[&e&l⭐&7] <##75FDFF>Remote <##FFCF75>Control":
-        execute player command "menu"
-
-
-
-
-
-
-
-
-
-
-on inventory click:
-    if event-item is a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ2":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            set {_Gemrandom} to a random integer between 1 and 7
-            if {_Gemrandom} is 1:
-
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Strength.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Strength.Pristine+5.Tier.2}'s name%" to player
-
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Strength.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Strength.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Strength.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Strength.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Strength.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Strength.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Strength.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Strength.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Strength.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Strength.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Strength.Broken.Tier.2}
-
-
-
-            if {_Gemrandom} is 2:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Speed.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Speed.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Speed.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Speed.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Speed.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Speed.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Speed.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Speed.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Speed.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Speed.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Speed.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Speed.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Speed.Broken.Tier.2}
-
-
-            if {_Gemrandom} is 3:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Fire.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Fire.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Fire.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Fire.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Fire.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Fire.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Fire.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Fire.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Fire.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Fire.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Fire.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Fire.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Fire.Broken.Tier.2}
-
-
-
-            if {_Gemrandom} is 4:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Life.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Life.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Life.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Life.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Life.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Life.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Life.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Life.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Life.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Life.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Life.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Life.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Life.Broken.Tier.2}
-
-
-
-            if {_Gemrandom} is 5:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Puff.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Puff.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Puff.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Puff.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Puff.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Puff.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Puff.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Puff.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Puff.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Puff.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Puff.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Puff.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Puff.Broken.Tier.2}
-
-
-
-            
-
-            if {_Gemrandom} is 6:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Wealth.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Wealth.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Wealth.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Wealth.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Wealth.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Wealth.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Wealth.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Wealth.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Wealth.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Wealth.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Wealth.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Wealth.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Wealth.Broken.Tier.2}
-
-
-
-            if {_Gemrandom} is 7:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Astra.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Astra.Pristine+5.Tier.2}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Astra.Pristine+5.Tier.2}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Astra.Pristine+4.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Astra.Pristine+3.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Astra.Pristine+2.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Astra.Pristine+1.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Astra.Pristine.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Astra.Scratched.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Astra.Cracked.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Astra.Damaged.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Astra.Ruined.Tier.2}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Astra.Broken.Tier.2}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-on inventory click:
-    if event-item is a yellow glass pane named "ʀᴀɴᴅᴏᴍ ᴛ1":
-        if name of event-inventory is "<##FFD773>&lGems":
-            cancel event
-            set {_Gemrandom} to a random integer between 1 and 7
-            if {_Gemrandom} is 1:
-
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Strength.Pristine+5.Tier.2}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Strength.Pristine+5.Tier.2}'s name%" to player
-
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Strength.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Strength.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Strength.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Strength.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Strength.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Strength.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Strength.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Strength.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Strength.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Strength.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Strength.Broken.Tier.1}
-
-
-
-            if {_Gemrandom} is 2:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Speed.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Speed.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Speed.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Speed.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Speed.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Speed.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Speed.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Speed.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Speed.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Speed.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Speed.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Speed.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Speed.Broken.Tier.1}
-
-
-            if {_Gemrandom} is 3:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Fire.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Fire.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Fire.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Fire.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Fire.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Fire.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Fire.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Fire.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Fire.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Fire.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Fire.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Fire.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Fire.Broken.Tier.1}
-
-
-
-            if {_Gemrandom} is 4:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Life.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Life.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Life.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Life.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Life.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Life.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Life.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Life.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Life.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Life.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Life.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Life.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Life.Broken.Tier.1}
-
-
-
-            if {_Gemrandom} is 5:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Puff.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Puff.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Puff.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Puff.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Puff.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Puff.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Puff.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Puff.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Puff.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Puff.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Puff.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Puff.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Puff.Broken.Tier.1}
-
-
-
-            
-
-            if {_Gemrandom} is 6:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Wealth.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Wealth.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Wealth.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Wealth.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Wealth.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Wealth.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Wealth.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Wealth.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Wealth.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Wealth.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Wealth.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Wealth.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Wealth.Broken.Tier.1}
-
-
-
-            if {_Gemrandom} is 7:
-                
-                send "<##FFE4AB>🔮 <##A4FEF1>You have given <##ffe4ab>%player% %{Gems.Astra.Pristine+5.Tier.1}'s name%" to player
-                send "<##FFE4AB>🔮 <##A4FEF1>You have received %{Gems.Astra.Pristine+5.Tier.1}'s name%" to player
-                set {_uuid} to uuid of player
-                if {Bliss.GemHealth.%{_uuid}%} is 11:
-                    give player {Gems.Astra.Pristine+5.Tier.1}
-                
-                if {Bliss.GemHealth.%{_uuid}%} is 10:
-                    give player {Gems.Astra.Pristine+4.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 9:
-                    give player {Gems.Astra.Pristine+3.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 8:
-                    give player {Gems.Astra.Pristine+2.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 7:
-                    give player {Gems.Astra.Pristine+1.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 6:
-                    give player {Gems.Astra.Pristine.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 5:
-                    give player {Gems.Astra.Scratched.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 4:
-                    give player {Gems.Astra.Cracked.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 3:
-                    give player {Gems.Astra.Damaged.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 2:
-                    give player {Gems.Astra.Ruined.Tier.1}
-
-                if {Bliss.GemHealth.%{_uuid}%} is 1:
-                    give player {Gems.Astra.Broken.Tier.1}
+	if player's held item is a globe banner pattern named "&7[&e&l⭐&7] <##75FDFF>Remote <##FFCF75>Control":
+		execute player command "menu"
