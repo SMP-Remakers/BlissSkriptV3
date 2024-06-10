@@ -13,13 +13,13 @@ Requirements:
 
   Addons with exact versions:
 
-  Lusk: [https://github.com/JakeGBLP/Lusk/releases 1.03](https://github.com/JakeGBLP/Lusk/releases/tag/1.0.3)
+  Lusk: https://github.com/JakeGBLP/Lusk/releases/tag/1.0.3
 
-  Skbee: [https://github.com/ShaneBeee/SkBee/releases/ 2.18.4](https://github.com/ShaneBeee/SkBee/releases/tag/2.18.4)
+  Skbee: https://github.com/ShaneBeee/SkBee/releases/tag/2.18.4
 
-  Skellet: [https://github.com/TheLimeGlass/Skellett/releases 2.0.9](https://github.com/TheLimeGlass/Skellett/releases/tag/2.0.9)
+  Skellet: https://github.com/TheLimeGlass/Skellett/releases/tag/2.0.9
 
-  Skquery: [https://github.com/SkQuery/SkQuery/releases 4.1.10](https://github.com/SkQuery/SkQuery/releases/tag/4.1.10)
+  Skquery: https://github.com/SkQuery/SkQuery/releases/tag/4.1.10
 
   Skrayfall: https://dev.bukkit.org/projects/skrayfall/files/3861074
 
