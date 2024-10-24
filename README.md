@@ -1,4 +1,4 @@
-# New update will be delayed and will come out in a long time
+# New update will be delayed and will come out in a long time (project is basically abandoned for now, please look at blissgemsremake)
 ## Bliss-Skript-V3
 Doesn't work on 1.20.2+ beacuse the version of Skbee on the github doesn't work that 1.20.2 and higher!
 This Skript remake is still a work in progress. This isn't done and was uploaded for bug fixing!
